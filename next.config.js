@@ -1,6 +1,28 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
+  sassOptions: {
+    includePaths: ['./src'],
+    prependData: `@import "./styles/variables.scss";`,
+  },
   reactStrictMode: true,
-}
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            svgoConfig: {
+              plugins: [
+                {
+                  cleanupIDs: false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    });
 
-module.exports = nextConfig
+    return config;
+  }
+}

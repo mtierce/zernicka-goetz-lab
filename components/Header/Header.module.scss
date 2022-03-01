@@ -1,0 +1,20 @@
+.header {
+    background: $color-primary-bg;
+    position: fixed;
+    height: 150px;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include navTransition;
+
+    &.hide {
+        transform: translateY(-100%);
+    }
+
+
+    .innerHeader {
+
+    }
+}
