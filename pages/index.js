@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import styles from './home.module.scss';
+import getMenu from '../utils/getMenu';
 
 // COMPONENTS
 import LloydRelaxation from '../components/LloydRelaxation/LloydRelaxation'
 import Layout from '../components/Layout/Layout';
 
-export default function Home() {
+export default function Home({menuItems}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +15,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
-        <LloydRelaxation />
+      <Layout menuItems={menuItems}>
+        {/* <LloydRelaxation /> */}
       </Layout>
 
     </div>
   )
+}
+
+export async function getStaticProps({params}) {
+  const menuItems = await getMenu();
+  return {
+    props: { menuItems }
+  }
 }

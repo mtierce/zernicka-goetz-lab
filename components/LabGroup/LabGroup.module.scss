@@ -1,0 +1,8 @@
+.LabGroup {
+    @include top-line-shadow;
+    padding: 3rem 0;
+
+    h1 {
+        margin: 0;
+    }
+}

@@ -5,7 +5,62 @@ import Link from 'next/link';
 
 const cx = Classnames.bind(styles);
 
-const Header = ({hidden}) => {
+const Header = ({}) => {
+    // hide the header & footer?
+    const [hidden, setHidden] = useState(false);
+
+    // full height of document
+    const [height, _setHeight] = useState(0);
+    const heightRef = useRef(height);
+    const setHeight = (newHeight) => {
+        heightRef.current = newHeight;
+        _setHeight(newHeight);
+    }
+
+    // track scroll position
+    const [scrollPos, _setScrollPos] = useState(0);
+    const scrollPosRef = useRef(scrollPos);
+    const setScrollPos = (position) => {
+        scrollPosRef.current = position;
+        _setScrollPos(position);
+    }
+
+    // add listener for scroll and get height of page on mount
+    useEffect(() => {
+        window.addEventListener('scroll', watchScroll);
+        let body = document.body,
+            html = document.documentElement;
+        let height = Math.max( body.scrollHeight, body.offsetHeight, 
+            html.clientHeight, html.scrollHeight, html.offsetHeight );
+        setHeight(height);
+
+        return () => {
+            window.removeEventListener('scroll', watchScroll)
+        }
+    }, []);
+
+
+    function watchScroll(event) {
+        if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
+            setHidden(false);
+        } else if (window.scrollY > 20) {
+            if (window.scrollY > scrollPosRef.current) {
+                setHidden(true);
+            } else {
+                setHidden(false);
+            }
+        } else {
+            setHidden(false);
+        }
+
+        let body = document.body,
+            html = document.documentElement;
+        let height = Math.max( body.scrollHeight, body.offsetHeight, 
+            html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+        setHeight(height);
+        setScrollPos(window.scrollY);
+    }
 
     let headerStyles = () => cx({
         header: true,
@@ -15,7 +70,7 @@ const Header = ({hidden}) => {
     return (
         <div className={headerStyles()}>
             <div className={styles.innerHeader}>
-                <h1><Link href="/">SPEEDBOAT</Link></h1>
+                <h2><Link href="/">Zernicka-Goetz Lab</Link></h2>
             </div>
         </div>
     );

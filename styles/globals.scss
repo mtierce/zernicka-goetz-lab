@@ -14,6 +14,23 @@ a {
   box-sizing: border-box;
 }
 
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child {
+  margin-top: 0;
+}
+p {
+  font-family: halyard-text, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+}
+p.body5 {
+  font-size: 13px;
+  line-height: 21px;
+}
+p.body4 {
+  font-size: 16px;
+  line-height: 22px;
+}
 
 h1 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;

@@ -1,0 +1,17 @@
+.PageSection {
+    display: grid;
+    justify-content: start;
+    @include respond-to(large) {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 50px;
+        .media {
+            grid-column: 1 / 6;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+        }
+        .text {
+            grid-column: 6 / 13;
+        }
+    }
+}

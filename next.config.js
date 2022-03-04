@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ['cdn.sanity.io'],
+  },
   sassOptions: {
     includePaths: ['./src'],
     prependData: `@import "./styles/variables.scss";`,
@@ -26,3 +29,4 @@ module.exports = {
     return config;
   }
 }
+

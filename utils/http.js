@@ -9,4 +9,5 @@ export const client = sanityClient({
     dataset: 'production',
     token: '',
     useCdn: true,
+    apiVersion: '2021-08-31'
 });
