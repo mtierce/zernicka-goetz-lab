@@ -1,0 +1,11 @@
+.AlternatingContainer {
+    @include twelve-column;
+    row-gap: 75px;
+    
+    > *:nth-child(odd) {
+        grid-column: 1 / 11;
+    }
+    > *:nth-child(even) {
+        grid-column: 3 / 13;
+    }
+}

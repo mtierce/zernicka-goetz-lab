@@ -18,6 +18,8 @@ const Media = memo(({items}) => {
     )
 });
 
+Media.displayName = "Media";
+
 const Text = memo(({title = "", text}) => {
     return (
         <div className={styles.text}>
@@ -27,10 +29,12 @@ const Text = memo(({title = "", text}) => {
     )
 });
 
+Text.displayName = "Text";
+
 const PageSection = ({section}) => {
     return (
         <div className={styles.PageSection}>
-            {section && section.media.length > 0 ? <Media items={section.media}/> : <></>}
+            {section && section.media && section.media.length > 0 ? <Media items={section.media}/> : <></>}
             {section && section.text ? <Text title={section.title} text={section.text}/> : <></>}
         </div>
     );

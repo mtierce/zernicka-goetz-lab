@@ -5,7 +5,6 @@ import Footer from '../Footer/Footer';
 import Head from 'next/head';
 
 const Layout = memo(({menuItems, children}) => {
-    
 
     return (
         <>  
@@ -19,5 +18,7 @@ const Layout = memo(({menuItems, children}) => {
         </>
     );
 });
+
+Layout.displayName = "Layout";
 
 export default Layout;

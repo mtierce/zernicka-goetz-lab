@@ -1,5 +1,5 @@
 .header {
-    background: $color-primary-bg;
+    background: $color-secondary-bg;
     position: fixed;
     height: 150px;
     top: 0;
@@ -9,9 +9,10 @@
     justify-content: center;
     z-index: 10;
     @include navTransition;
+    @include navDropShadow;
 
     &.hide {
-        transform: translateY(-100%);
+        transform: translateY(-110%);
     }
 
 

@@ -1,7 +1,7 @@
 .footer {
     height: 75px;
     width: 100%;
-    background: $color-primary-bg;
+    background: $color-secondary-bg;
     position: fixed;
     bottom: 0;
     display: flex;
@@ -10,8 +10,9 @@
     z-index: 10;
 
     @include navTransition;
+    @include navDropShadow;
     &.hide {
-        transform: translateY(100%);
+        transform: translateY(110%);
     }
 
     .innerFooter {
@@ -20,7 +21,7 @@
 
         .navItem {
             margin: 0;
-            padding: 20px 10px;
+            padding: 20px 20px;
             &:hover {
                 cursor: pointer;
             }

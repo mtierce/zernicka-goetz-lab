@@ -52,9 +52,7 @@ export default function Home({menuItems}) {
             </Head>
 
             <Layout menuItems={menuItems}>
-                <Container>
-                    <PublicationList pubs={chunkPubsByYear(pubs)} />
-                </Container>
+                <PublicationList pubs={chunkPubsByYear(pubs)} />
             </Layout>
         </>
     )

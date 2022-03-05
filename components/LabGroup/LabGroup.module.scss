@@ -1,8 +1,12 @@
 .LabGroup {
     @include top-line-shadow;
-    padding: 3rem 0;
+    padding: 75px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
 
-    h1 {
+    h1, h4 {
         margin: 0;
     }
 }

@@ -31,7 +31,7 @@ export default function Page({menuItems}) {
     }, [router.query.slug])
 
     // Map page sections
-    const pageContent = () => {
+    const PageContent = () => {
         return page.content.map( section => {
             console.log(section);
             return <PageSection key={section._key} section={section} />
@@ -45,7 +45,7 @@ export default function Page({menuItems}) {
             </Head>
             <Layout menuItems={menuItems}>
                 <Container>
-                    {page && page.content && page.content.length > 0 ? pageContent() : <></>}
+                    {page && page.content && page.content.length > 0 ? <PageContent/> : <></>}
                 </Container>
             </Layout>
         </>

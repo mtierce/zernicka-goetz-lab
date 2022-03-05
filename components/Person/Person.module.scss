@@ -1,0 +1,19 @@
+.Person {
+    display: flex;
+    gap: 25px;
+
+    .text {
+        h3 {margin: 0}
+    }
+
+    .portrait {
+        flex-shrink: 0;
+        height: 170px;
+        width: 170px;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

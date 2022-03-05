@@ -22,8 +22,6 @@ const menuItemClasses = (item, path) => {
 }
 
 const MapMenuItems = memo(({menuItems}) => {
-    console.log("rerendering menu");
-
     const router = useRouter();
 
     return menuItems.map( item => {
@@ -42,6 +40,7 @@ const MapMenuItems = memo(({menuItems}) => {
         }
     })
 });
+MapMenuItems.displayName = "MapMenuItems";
 
 const Footer = memo(({menuItems}) => {
     // hide the header & footer?
@@ -122,5 +121,7 @@ const Footer = memo(({menuItems}) => {
         </div>
     );
 });
+
+Footer.displayName = "Footer";
 
 export default Footer;

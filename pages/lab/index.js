@@ -8,11 +8,12 @@ import Head from 'next/head'
 import getMenu from '../../utils/getMenu';
 import getLabPage from '../../utils/getLabPage';
 import getPeople from '../../utils/getPeople';
+import getRoles from '../../utils/getRoles';
 
 // COMPONENTS
 import Layout from '../../components/Layout/Layout';
-import Container from '../../components/Container/Container';
 import LabGroup from '../../components/LabGroup/LabGroup';
+import AlternatingContainer from '../../components/AlternatingContainer/AlternatingContainer';
 
 // ----------------------------------------
 // ----------------------------------------
@@ -20,6 +21,7 @@ import LabGroup from '../../components/LabGroup/LabGroup';
 export default function Lab({menuItems}) {
     const [page, setPage] = useState(null);
     const [people, setPeople] = useState([]);
+    const [roles, setRoles] = useState([]);
 
     useEffect(() => {
         getLabPage()
@@ -32,19 +34,31 @@ export default function Lab({menuItems}) {
             })
         getPeople()
             .then( res => {
+                console.log(res);
                 setPeople(res)
             })
             .catch( err => {
                 console.log(err)
             })
+        getRoles()
+            .then( res => {
+                console.log(res);
+                setRoles(res);
+            })
+            .catch( err => {
+                console.log(err);
+            })
     }, [])
     
+    const filterPeopleByLab = (lab) => {
+        return people.filter( person => person.lab == lab);
+    }
 
     const conditionalContent = () => {
         if (page && page.content && page.content.length > 0) {
             return page.content.map( section => {
                 if (section._type == "labGroup") {
-                    return <LabGroup group={section} people={getPeople(section.lab)}/>
+                    return <LabGroup group={section} key={section._key} people={filterPeopleByLab(section.lab)} roles={roles}/>
                 } else {
                     // TODO RETURN non-lab-group section (images & text?)
                     return 
@@ -62,9 +76,9 @@ export default function Lab({menuItems}) {
       </Head>
 
       <Layout menuItems={menuItems}>
-          <Container>
+          <AlternatingContainer>
               {conditionalContent()}
-          </Container>
+          </AlternatingContainer>
       </Layout>
 
     </>
