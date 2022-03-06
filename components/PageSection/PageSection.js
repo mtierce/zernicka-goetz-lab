@@ -3,6 +3,7 @@ import styles from './PageSection.module.scss';
 import RichBlocks from '../RichBlocks/RichBlocks';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 import Video from '../Video/Video';
+import Map from '../Map/Map';
 
 const Media = memo(({items}) => {
     return (
@@ -12,6 +13,8 @@ const Media = memo(({items}) => {
                     return <ResponsiveImage img={item} key={item._key}/>
                 } else if (item._type == "video") {
                     return <Video vid={item} key={item._key} />
+                } else if (item._type == "map") {
+                    return <Map lat={item.lat} lon={item.lon} zoom={item.zoom} />
                 }
             })}
         </div>

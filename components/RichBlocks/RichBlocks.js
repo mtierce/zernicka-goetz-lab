@@ -1,14 +1,21 @@
 import SanityBlockContent from "@sanity/block-content-to-react";
 import Link from 'next/link';
 
-const RichBlocks = ({blocks}) => {
+const RichBlocks = ({blocks, noH1=false}) => {
     const serializers = {
         types: {
             richBlock: (props) => {
                 if (props.node.listItem) {
                     return SanityBlockContent.defaultSerializers.listItem(props);
                 }
-                return SanityBlockContent.defaultSerializers.types.block(props);
+                if (noH1) {
+                    if (props.node.style == "h1") {
+                        props.node.style = "h2";
+                    }
+                    return SanityBlockContent.defaultSerializers.types.block(props);
+                } else {
+                    return SanityBlockContent.defaultSerializers.types.block(props);
+                }
             }
         },
         marks: {

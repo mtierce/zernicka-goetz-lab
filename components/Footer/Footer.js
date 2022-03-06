@@ -46,14 +46,6 @@ const Footer = memo(({menuItems}) => {
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
 
-    useEffect(() => {
-        console.log("Menu items are causing rerender")
-    }, [menuItems])
-
-    useEffect(() => {
-        console.log("Hidden state change on footer");
-    }, [hidden]);
-
     // full height of document
     const [height, _setHeight] = useState(0);
     const heightRef = useRef(height);

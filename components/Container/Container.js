@@ -4,7 +4,9 @@ import styles from './Container.module.scss';
 const Container = ({children}) => {
     return (
         <div className={styles.Container}>
-            {children}
+            <div className={styles.innerContainer}>
+                {children}
+            </div>
         </div>
     );
 };

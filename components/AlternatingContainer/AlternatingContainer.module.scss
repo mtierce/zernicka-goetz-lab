@@ -8,4 +8,13 @@
     > *:nth-child(even) {
         grid-column: 3 / 13;
     }
+
+    &.narrow {
+        > *:nth-child(odd) {
+            grid-column: 6 / 13;
+        }
+        > *:nth-child(even) {
+            grid-column: 1 / 8;
+        }
+    }
 }

@@ -7,9 +7,9 @@ import Container from '../Container/Container';
 
 const PublicationList = ({pubs}) => {
     return (
-        <Container>
+        <>
             {pubs.map( groupByYear => <PublicationGroup key={groupByYear[0]._id} pubGroup={groupByYear}/>)}
-        </Container>
+        </>
     );
 };
 
