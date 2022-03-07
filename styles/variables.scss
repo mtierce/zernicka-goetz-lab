@@ -7,8 +7,8 @@ $break-medium: 1400px;
     @else if $media == mediumsmall {
       @media only screen and (max-width: $break-medium) { @content; }
     }
-    @else if $media == mediumbig {
-      @media only screen and (min-width: $break-medium) { @content; }
+    @else if $media == mediumlarge {
+      @media only screen and (min-width: $break-small) { @content; }
     }
     @else if $media == medium {
       @media only screen and (min-width: $break-small) and (max-width: $break-medium) { @content; }

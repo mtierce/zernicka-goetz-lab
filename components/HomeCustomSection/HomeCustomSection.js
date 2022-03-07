@@ -7,7 +7,7 @@ const HomeCustomSection = ({content}) => {
     return (
         <div className={styles.HomeCustomSection}>
             <RichBlocks blocks={content.text} />
-            <ArrowButton link={content.link.url} text={content.link.display} size={"large"}/>
+            <ArrowButton link={content.link.url} text={content.link.display} size={"large"} type={"internal"}/>
         </div>
     );
 };

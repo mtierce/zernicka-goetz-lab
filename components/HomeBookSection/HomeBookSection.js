@@ -18,7 +18,7 @@ const HomeBookSection = ({}) => {
             </div>
             <div className={styles.buttons}>
                 <ArrowButton link={"https://www.barnesandnoble.com/w/the-dance-of-life-magdalena-zernicka-goetz/1130777524"} text={"Barnes & Noble"} />
-                <ArrowButton link={"amazon.com/Dance-Life-Science-Single-Becomes/dp/1541699068"} text={"Amazon"} />
+                <ArrowButton link={"https://amazon.com/Dance-Life-Science-Single-Becomes/dp/1541699068"} text={"Amazon"} />
             </div>
         </div>
     );
