@@ -16,4 +16,13 @@
             width: 100%;
         }
     }
+
+    @include respond-to(mediumsmall) {
+        flex-direction: column;
+        .text {
+            * {
+                max-width: 30em;
+            }
+        }
+    }
 }

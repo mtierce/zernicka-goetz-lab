@@ -1,1 +1,17 @@
-.HomeNewsSection {}
+.HomeNewsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    .FirstNewsItem {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .smallItems {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}

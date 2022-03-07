@@ -24,7 +24,7 @@ const LinkComponent = ({link, type="external", children, size="small"}) => {
 
 const ArrowButton = ({text, link, type="external", size="small"}) => {
     return (
-        <LinkComponent link={link} size={size}>
+        <LinkComponent link={link} size={size} type={type}>
             {size == "small" ? <h6>{text} →</h6> : <h2>{text} →</h2>}
         </LinkComponent>
     )

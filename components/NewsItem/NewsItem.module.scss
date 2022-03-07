@@ -17,4 +17,18 @@
         }
     }
     
+    @include respond-to(mediumsmall) {
+        .post .date {
+            width: unset;
+        }
+    }
+    @include respond-to(small) {
+        .post {
+            flex-direction: column;
+            gap: 1rem;
+            .text {
+                * {margin: 0;}
+            }
+        }
+    }
 }

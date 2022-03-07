@@ -34,7 +34,7 @@ const HomeResearchContent = ({content}) => {
     return (
         <div className={styles.HomeResearchContent}>
             {research && research.content && research.content.length > 0 ? mapContent() : <></>}
-            <ArrowButton link={"/research"} text={"Research"} size={"large"}/>
+            <ArrowButton link={"/research"} text={"Research"} type={"internal"} size={"large"}/>
         </div>
     )
 };

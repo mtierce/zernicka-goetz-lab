@@ -1,9 +1,8 @@
 .PageSection {
-    display: grid;
-    justify-content: start;
-    position: relative;
-
-    @include respond-to(large) {
+    @include respond-to(mediumlarge) {
+        display: grid;
+        justify-content: start;
+        position: relative;
         grid-template-columns: repeat(12, 1fr);
         column-gap: 50px;
         .media {
@@ -16,6 +15,17 @@
             position: relative;
             @include top-line-shadow;
             grid-column: 6 / 13;
+        }
+    }
+
+    @include respond-to(small) {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .media {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
         }
     }
 }

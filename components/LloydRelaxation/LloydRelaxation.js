@@ -2,48 +2,160 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './LloydRelaxation.module.scss';
 import { Delaunay } from 'd3-delaunay';
 import { polygonCentroid } from 'd3-polygon';
+import useInterval from '../../utils/useInterval';
 
 const LloydRelaxation = ({}) => {
-    const canvasRef = useRef();
-    const container = useRef();
-    const [width, setWidth] = useState();
-    const [height, setHeight] = useState();
+    const [animating, setAnimating] = useState(true);
+    
+    useInterval(() => {
+        setFrame( frame + 10 );
+        window.scrollTo(0, window.innerHeight * frame / 1200);
+        if (window.scrollY > window.innerHeight * 0.48) {
+            setAnimating(false);
+        }
+    }, animating ? 60 : null )
+
+    // track scroll position
+    const [scrollPos, _setScrollPos] = useState(0);
+    const scrollPosRef = useRef(scrollPos);
+    const setScrollPos = (position) => {
+        scrollPosRef.current = position;
+        _setScrollPos(position);
+    }
+
+    // add listener for scroll and get height of page on mount
+    useEffect(() => {
+        if( !animating ) {
+            window.addEventListener('scroll', watchScroll);
+            return () => {
+                window.removeEventListener('scroll', watchScroll)
+            }
+        }
+    }, [animating]);
 
     useEffect(() => {
-        setHeight(container.current.offsetWidth);
-        setHeight(container.current.offsetHeight);
-
-
-
-        const n = 500 << 1;
-        const points = Float64Array.from({length: n}, (_, i) => Math.random() + (i & 1 ? height : width) / 2);
-        const delaunay = new Delaunay(points);
-        console.log(canvasRef.current);
-        const context = canvasRef.current.getContext('2d');
-        context.lineCap = "square";
-        const voronoi = delaunay.voronoi([0, 0, width, height]);
-        for (let i = 0; i < 1200; ++i) {
-            context.clearRect(0, 0, width, height);
-            context.beginPath();
-            voronoi.render(context);
-            context.strokeStyle = "red";
-            context.stroke();
-
-            context.beginPath();
-            for (let i = 0; i < n; i += 2) {
-                const cell = voronoi.cellPolygon(i >> 1);
-                if (cell === null) continue;
-                const x0 = points[i], y0 = points[i + 1];
-                const [x1, y1] = polygonCentroid(cell);
-                context.moveTo(x0, y0);
-                context.lineTo(points[i] = x0 + (x1 - x0), points[i + 1] = y0 + (y1 - y0));
-            }
-            context.strokeStyle = "black";
-            context.stroke();
-            
-            voronoi.update();
+        if (animating) {
+            window.addEventListener('wheel', () => {
+                setAnimating(false);
+            });
+            window.addEventListener('touchstart', () => {
+                setAnimating(false);
+            })
         }
     }, [])
+
+    function watchScroll(event) {
+        if (window.scrollY > scrollPosRef.current) {
+            setFrame(window.scrollY / window.innerHeight * 1200);
+        } else {
+            setReverseFrame(window.scrollY / window.innerHeight * 1200);
+        }
+        setScrollPos(window.scrollY);
+    }
+
+    const canvasRef = useRef();
+    const container = useRef();
+
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+
+    const [frame, setFrame] = useState(0);
+    const [reverseFrame, setReverseFrame] = useState(0);
+
+    const points = useRef(null);
+    const voronoi = useRef(null);
+    const context = useRef(null);
+
+    const pointArrays = useRef([]);
+
+    useEffect(() => {
+        console.log(window.innerHeight);
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+        setup();
+    }, []);
+
+    useEffect(() => {
+        draw();
+    }, [frame]);
+
+    useEffect(() => {
+        reverseDraw();
+    }, [reverseFrame]);
+
+    const setup = () => {
+        let tempWidth = window.innerWidth;
+        let tempHeight = window.innerHeight;
+
+        const n = 500 << 1;
+        points.current = Float64Array.from({length: n}, (_, i) => Math.random() + (i & 1 ? tempHeight : tempWidth) / 2);
+        const delaunay = new Delaunay(points.current);
+        context.current = canvasRef.current.getContext('2d');
+        context.current.lineCap = "square";
+        voronoi.current = delaunay.voronoi([0, 0, tempWidth, tempHeight]);
+
+        for (let j = 0; j < 10; j++) {
+            for (let i = 0; i < points.current.length; i += 2) {
+                const cell = voronoi.current.cellPolygon(i >> 1);
+                if (cell === null) continue;
+                const x0 = points.current[i], y0 = points.current[i + 1];
+                const [x1, y1] = polygonCentroid(cell);
+                points.current[i] = x0 + (x1 - x0);
+                points.current[i + 1] = y0 + (y1 - y0);
+            }
+        }
+        voronoi.current.update();
+    }
+
+    const draw = () => {
+        pointArrays.current.push([...points.current]);
+
+        context.current.clearRect(0, 0, width, height);
+        context.current.beginPath();
+        voronoi.current.render(context.current);
+        context.current.strokeStyle = "red";
+        context.current.stroke();
+
+        context.current.beginPath();
+        for (let i = 0; i < points.current.length; i += 2) {
+            const cell = voronoi.current.cellPolygon(i >> 1);
+            if (cell === null) continue;
+            const x0 = points.current[i];
+            const y0 = points.current[i + 1];
+            const [x1, y1] = polygonCentroid(cell);
+            context.current.moveTo(x0, y0);
+            context.current.lineTo(points.current[i] = x0 + (x1 - x0), points.current[i + 1] = y0 + (y1 - y0));
+        }
+
+        context.current.stroke();            
+        voronoi.current.update();
+    }
+
+    const reverseDraw = () => {
+        
+        if (pointArrays.current && pointArrays.current.length > 0) {
+            let prevPoints = pointArrays.current.pop();
+
+            context.current.clearRect(0, 0, width, height);
+            context.current.beginPath();
+            voronoi.current.render(context.current);
+            context.current.strokeStyle = "red";
+            context.current.stroke();
+
+            context.current.beginPath();
+            for (let i = 0; i < prevPoints.length; i += 2) {
+                const cell = voronoi.current.cellPolygon(i >> 1);
+                if (cell === null) continue;
+                const x0 = prevPoints[i];
+                const y0 = prevPoints[i + 1];
+                const [x1, y1] = polygonCentroid(cell);
+                context.current.moveTo(x0, y0);
+                context.current.lineTo(points.current[i] = prevPoints[i], points.current[i+1] = prevPoints[i + 1]);
+            }
+            context.current.stroke();            
+            voronoi.current.update();
+        }
+    }
 
     return (
         <div className={styles.LloydRelaxation} ref={container}>

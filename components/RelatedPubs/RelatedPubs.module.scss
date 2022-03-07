@@ -2,4 +2,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
+
+    @include respond-to(small) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }

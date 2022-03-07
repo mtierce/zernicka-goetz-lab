@@ -1,0 +1,25 @@
+.HomeBookSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h2 {
+        margin: 0;
+    }
+
+    .content {
+        display: flex;
+        gap: 2rem;
+        .book {
+            width: 175px;
+        }
+        .text {
+            p { margin-top: 0;}
+        }
+    }
+    .buttons {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+    }
+}

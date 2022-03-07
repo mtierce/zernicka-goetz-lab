@@ -2,10 +2,15 @@ import React, {useEffect, useState, useRef} from 'react';
 import styles from './Header.module.scss';
 import Classnames from 'classnames/bind';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const cx = Classnames.bind(styles);
 
 const Header = ({}) => {
+    const router = useRouter();
+    
+
+
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
 
@@ -41,9 +46,10 @@ const Header = ({}) => {
 
 
     function watchScroll(event) {
+        let minScroll = router.pathname == "/" ? window.innerHeight * 0.5 : 20;
         if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
             setHidden(false);
-        } else if (window.scrollY > 20) {
+        } else if (window.scrollY > minScroll) {
             if (window.scrollY > scrollPosRef.current) {
                 setHidden(true);
             } else {

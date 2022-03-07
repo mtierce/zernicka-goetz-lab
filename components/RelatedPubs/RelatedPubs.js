@@ -7,9 +7,9 @@ const RelatedPubs = ({researchContent}) => {
         return researchContent.map( researchSection => {
             if (researchSection._type == "research" && researchSection.relatedPubs && researchSection.relatedPubs.length > 0) {
                 return (
-                    <div>
+                    <div key={researchSection._key}>
                         <h4>{researchSection.title}</h4>
-                        {researchSection.relatedPubs.map( pub => <RelatedPub pub={pub} />)}
+                        {researchSection.relatedPubs.map( pub => <RelatedPub key={pub._id} pub={pub} />)}
                     </div>
                 )
             } else {

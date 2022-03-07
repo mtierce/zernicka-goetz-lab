@@ -1,6 +1,12 @@
 .AlternatingContainer {
     @include twelve-column;
     row-gap: 75px;
+
+    @include respond-to(mediumsmall) {
+        display: flex;
+        flex-direction: column;
+        gap: 150px;
+    }
     
     > *:nth-child(odd) {
         grid-column: 1 / 11;

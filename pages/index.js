@@ -17,6 +17,8 @@ import Layout from '../components/Layout/Layout';
 import AlternatingContainer from '../components/AlternatingContainer/AlternatingContainer';
 import HomeResearchContent from '../components/HomeResearchContent/HomeResearchContent';
 import HomeCustomSection from '../components/HomeCustomSection/HomeCustomSection';
+import HomeNewsSection from '../components/HomeNewsSection/HomeNewsSection';
+import HomeBookSection from '../components/HomeBookSection/HomeBookSection';
 
 // HELPER COMPONENTS
 const HomeContent = ({content}) => {
@@ -25,9 +27,9 @@ const HomeContent = ({content}) => {
       if (section.type == "research") {
         return <HomeResearchContent key={section._key}/>
       } else if (section.type == "news") {
-        return <div key={section._key}>NEWS</div>
+        return <HomeNewsSection key={section._key} />
       } else if (section.type == "book") {
-        return <div key={section._key}>BOOK</div>
+        return <HomeBookSection key={section._key} />
       }
     } else {
       return <HomeCustomSection key={section._key} content={section}/>
@@ -57,7 +59,7 @@ export default function Home({menuItems}) {
       </Head>
 
       <Layout menuItems={menuItems}>
-        {/* <LloydRelaxation /> */}
+        <LloydRelaxation />
         <AlternatingContainer narrow={true}>
           {home && home.content && home.content.length > 0 ? <HomeContent content={home.content}/> : <></>}
         </AlternatingContainer>

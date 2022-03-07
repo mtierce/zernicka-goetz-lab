@@ -25,4 +25,16 @@
             height: 175px;
         }
     }
+
+    @include respond-to(mediumsmall) {
+        flex-direction: column !important;
+        align-items: center;
+        margin: 5rem 0 0;
+
+        .imageContainer {
+            width: 175px;
+            height: 175px;
+            border-radius: 87px;
+        }
+    }
 }

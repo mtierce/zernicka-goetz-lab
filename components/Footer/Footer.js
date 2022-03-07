@@ -43,8 +43,10 @@ const MapMenuItems = memo(({menuItems}) => {
 MapMenuItems.displayName = "MapMenuItems";
 
 const Footer = memo(({menuItems}) => {
+    const router = useRouter();
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
+    const [mobileHidden, setMobileHidden] = useState(true);
 
     // full height of document
     const [height, _setHeight] = useState(0);
@@ -78,9 +80,10 @@ const Footer = memo(({menuItems}) => {
 
 
     function watchScroll(event) {
+        let minScroll = router.pathname == "/" ? window.innerHeight * 0.5 : 20;
         if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
             setHidden(false);
-        } else if (window.scrollY > 20) {
+        } else if (window.scrollY > minScroll) {
             if (window.scrollY > scrollPosRef.current) {
                 setHidden(true);
             } else {
@@ -102,15 +105,21 @@ const Footer = memo(({menuItems}) => {
 
     let footerStyles = () => cx({
         footer: true,
-        hide: hidden
+        hide: hidden,
+        mobileHide: mobileHidden
     });
 
     return (
-        <div className={footerStyles()}>
-            <div className={styles.innerFooter}>
-                <MapMenuItems menuItems={menuItems} />
+        <>
+            <div className={footerStyles()}>
+                <div className={styles.innerFooter}>
+                    <MapMenuItems menuItems={menuItems} />
+                </div>
             </div>
-        </div>
+            <div className={styles.menuButton} onClick={() => {setMobileHidden(!mobileHidden)}}>
+                O
+            </div>
+        </>
     );
 });
 
