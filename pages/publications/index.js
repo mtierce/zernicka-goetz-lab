@@ -1,5 +1,8 @@
 // STYLES
 
+// REACT
+import { useEffect, useState } from 'react';
+
 // NEXT JS
 import Head from 'next/head'
 
@@ -11,10 +14,16 @@ import getPublications from '../../utils/getPublications';
 import Layout from '../../components/Layout/Layout';
 import Container from '../../components/Container/Container';
 import PublicationList from '../../components/PublicationList/PublicationList';
-import { useEffect, useState } from 'react';
+import ButtonIcon from '../../components/ButtonIcon/ButtonIcon';
+import Filter from '../../components/Filter/Filter';
+
+// CONTEXTS
+import { SearchFilterProvider } from '../../contexts/searchFilterContext';
+
 
 export default function Home({menuItems}) {
     const [pubs, setPubs] = useState([]);
+    const [filterOpen, setFilterOpen] = useState(false);
     
     useEffect(() => {
         getPublications()
@@ -26,23 +35,6 @@ export default function Home({menuItems}) {
             })
     }, [])
 
-    const chunkPubsByYear = (pubs) => {
-        let prevYear = null;
-        return pubs.reduce( (prev, curr) => {
-            // if current pub date is a new year
-            let year = new Date(curr.pubDate).toLocaleDateString('en', {year: "numeric"});
-
-            if ( prev.length == 0 || year != prevYear ) {
-                prev.push([curr]);
-            } else {
-                prev[prev.length - 1].push(curr);
-            }
-
-            prevYear = year;
-            return prev;
-        }, [])
-    }
-
     return (
         <>
             <Head>
@@ -51,10 +43,13 @@ export default function Home({menuItems}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Layout menuItems={menuItems}>
-                <Container>
-                    <PublicationList pubs={chunkPubsByYear(pubs)} />
-                </Container>
+            <Layout menuItems={menuItems} headerButton={filterOpen ? <ButtonIcon  type="close" callback={() => setFilterOpen(false)}/> : <ButtonIcon type="filter" callback={() => setFilterOpen(true)}/>}>
+                <SearchFilterProvider>
+                    <Filter open={filterOpen} setFilterOpen={setFilterOpen}/>
+                    <Container>
+                        <PublicationList pubs={pubs} />
+                    </Container>
+                </SearchFilterProvider>
             </Layout>
         </>
     )

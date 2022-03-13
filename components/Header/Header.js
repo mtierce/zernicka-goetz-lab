@@ -6,11 +6,9 @@ import { useRouter } from 'next/router';
 
 const cx = Classnames.bind(styles);
 
-const Header = ({}) => {
+const Header = ({headerButton}) => {
     const router = useRouter();
     
-
-
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
 
@@ -78,6 +76,7 @@ const Header = ({}) => {
             <div className={styles.innerHeader}>
                 <h2><Link href="/">Zernicka-Goetz Lab</Link></h2>
             </div>
+            {headerButton ? <div className={styles.headerButton}>{headerButton}</div> : <></>}
         </div>
     );
 };

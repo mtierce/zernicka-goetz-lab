@@ -7,26 +7,14 @@ module.exports = {
     prependData: `@import "./styles/variables.scss";`,
   },
   reactStrictMode: true,
-  webpack(config, options) {
+  webpack(config) {
     config.module.rules.push({
-      test: /\.svg$/,
-      use: [
-        {
-          loader: "@svgr/webpack",
-          options: {
-            svgoConfig: {
-              plugins: [
-                {
-                  cleanupIDs: false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    });
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    })
 
-    return config;
+    return config
   }
 }
 
