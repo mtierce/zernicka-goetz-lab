@@ -1,0 +1,14 @@
+.Tags {
+    .tag {
+        display: inline-block;
+        list-style-type: none;
+        margin-right: 2rem;
+        &:hover {
+            cursor: pointer;
+        }
+        
+        * {
+            display: inline-block;
+        }
+    }
+}

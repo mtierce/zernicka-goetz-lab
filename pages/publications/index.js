@@ -1,7 +1,7 @@
 // STYLES
 
 // REACT
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 // NEXT JS
 import Head from 'next/head'
@@ -9,6 +9,7 @@ import Head from 'next/head'
 // UTILITIES
 import getMenu from '../../utils/getMenu';
 import getPublications from '../../utils/getPublications';
+import { getTags } from '../../components/PublicationList/PublicationListUtilities';
 
 // COMPONENTS
 import Layout from '../../components/Layout/Layout';
@@ -33,7 +34,12 @@ export default function Home({menuItems}) {
             .catch( err => {
                 console.log(err);
             })
-    }, [])
+    }, []);
+
+    const tags = useMemo(() => {
+        console.log(getTags(pubs));
+        return getTags(pubs);
+    }, [pubs])
 
     return (
         <>
@@ -45,7 +51,7 @@ export default function Home({menuItems}) {
 
             <Layout menuItems={menuItems} headerButton={filterOpen ? <ButtonIcon  type="close" callback={() => setFilterOpen(false)}/> : <ButtonIcon type="filter" callback={() => setFilterOpen(true)}/>}>
                 <SearchFilterProvider>
-                    <Filter open={filterOpen} setFilterOpen={setFilterOpen}/>
+                    <Filter open={filterOpen} setFilterOpen={setFilterOpen} tags={tags}/>
                     <Container>
                         <PublicationList pubs={pubs} />
                     </Container>

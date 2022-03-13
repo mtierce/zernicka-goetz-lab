@@ -18,7 +18,8 @@ const SearchResultsMeta = ({show, numPubs, numFilteredPubs}) => {
 
     return (
         <div>
-            <h3>{numFilteredPubs} out of {numPubs} publications matched your search for “{search.terms.length > 0 ? search.terms[0] : filter.terms[0]}”.</h3>
+            <h3>{numFilteredPubs} out of {numPubs} publications matched {search.terms.length > 0 ? `your search for “${search.terms[0]}”` : `the category of ${filter.terms[0]}`}.</h3>
+            <p className={styles.clearFilter} onClick={() => {search.clear(); filter.clear();}}> Clear your {search.terms.length > 0 ? 'search' : 'selection'}</p>
         </div>
     )
 }

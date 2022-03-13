@@ -6,7 +6,7 @@ export const matchSearch = (term, publication) => {
 export const matchFilter = (term, publication) => {
     // return true if publication tag includes tag term
     if (!("tags" in publication)) return false;
-    return (publication.tags && publication.tags.some(tag => tag.tag === term));
+    return (publication.tags && publication.tags.some(tag => tag.title === term));
 }
 
 export const getFilter = (search, filter) => {    
@@ -16,6 +16,19 @@ export const getFilter = (search, filter) => {
     return (publication) => {
         return search.terms.some(term => matchSearch(term, publication)) || filter.terms.some(term => matchFilter(term, publication));
     }
+}
+
+export const getTags = (publications) => {
+    return publications.map( pub => {
+        return pub.tags ? pub.tags.map(tag => tag.title) : []
+    }).reduce( (prev, cur) => {
+        cur.forEach( tag => {
+            if (!prev.includes(tag)) {
+                prev.push(tag);
+            }
+        }, []);
+        return prev;
+    }, []);
 }
 
 export const chunkPubsByYear = (pubs) => {

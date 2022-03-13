@@ -33,7 +33,7 @@ const SearchFilterProvider = ({children}) => {
 
     const value = {
         search: {terms: searchTerms, add: addSearchTerm, removeTerm: removeSearchTerm, clear: clearSearchTerms, set: setSearchTerms},
-        filter: {terms: filterTerms, add: addFilterTerm, removeTerm: removeFilterTerm, clear: clearFilterTerms},
+        filter: {terms: filterTerms, add: addFilterTerm, removeTerm: removeFilterTerm, clear: clearFilterTerms, set: setFilterTerms},
         }
     return (
         <SearchFilterContext.Provider value={value} >
