@@ -1,6 +1,6 @@
 .AlternatingContainer {
     @include twelve-column;
-    row-gap: 75px;
+    row-gap: 125px;
 
     @include respond-to(mediumsmall) {
         display: flex;

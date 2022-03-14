@@ -5,8 +5,6 @@ import getMenu from "../../utils/getMenu";
 import getResearch from "../../utils/getResearch";
 import ResearchDirection from "../../components/ResearchDirection/ResearchDirection";
 import ResearchPageSection from '../../components/ResearchPageSection/ResearchPageSection';
-import Container from "../../components/Container/Container";
-import RelatedPubs from "../../components/RelatedPubs/RelatedPubs";
 
 const ResearchContent = ({content}) => {
     let count = 0;
@@ -20,16 +18,6 @@ const ResearchContent = ({content}) => {
         }
     });
 }
-
-const RelatedPubsContainer = ({researchContent}) => {
-    return (
-        <Container>
-            <h3>Related Publications</h3>
-            <RelatedPubs researchContent={researchContent} />
-        </Container>
-    )
-}
-
 
 export default function Research({menuItems}) {
     const [research, setResearch] = useState(null);
@@ -49,7 +37,6 @@ export default function Research({menuItems}) {
             <AlternatingContainer>
                 {research && research.content && research.content.length > 0 ? <ResearchContent content={research.content} /> : <></>}
             </AlternatingContainer>
-            {research && research.content && research.content.some( section => section._type == "research" && section.relatedPubs && section.relatedPubs.length > 0) ? <RelatedPubsContainer researchContent={research.content}/> : <></>}
         </Layout>
     )
 }

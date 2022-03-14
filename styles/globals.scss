@@ -100,6 +100,18 @@ h6 {
   }
 }
 
+p a {
+  color: $color-highlight;
+  &:hover {
+    text-decoration: underline #F7CCD7 0.4em;
+    text-underline-offset: -0.4em;
+    text-decoration-skip-ink: none;
+  }
+  &:active {
+    color: #F7CCD7;
+  }
+}
+
 // MAPS
 
 .map-container {

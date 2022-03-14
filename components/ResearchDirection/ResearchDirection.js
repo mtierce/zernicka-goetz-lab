@@ -4,13 +4,36 @@ import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 import styles from './ResearchDirection.module.scss';
 import classNames from 'classnames/bind';
 
+import Masonry from 'react-masonry-component';
+
 let cx = classNames.bind(styles);
 
-const ResearchDirection = ({content, even, narrow}) => {
+const RelPub = ({pub}) => {
+    console.log(pub);
+    return (
+        <div className={styles.relatedPub}>
+            <p className="body5">
+               {pub.authors}. <a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>. <em>{pub.pub}</em>. DOI: {pub.doi}.
+            </p>
+        </div>
+    )
+}
+
+const RelatedPubs = ({pubs}) => {
+    return (
+        <div className={styles.relatedPubs}>
+            <h5>Related Publications</h5>
+            <Masonry className={styles.pubList}>
+                {pubs.map( pub => <RelPub pub={pub} key={pub._key}/>)}
+            </Masonry>
+        </div>
+    )
+}
+
+const ResearchDirection = ({content, even}) => {
     let researchDirectionClasses = cx({
         ResearchDirection: true,
-        even: even,
-        narrow: narrow
+        even: even
     });
 
     return (
@@ -19,8 +42,9 @@ const ResearchDirection = ({content, even, narrow}) => {
                 {content.media && content.media.length > 0 ? <ResponsiveImage img={content.media[0]} /> : <></>}
             </div>
             <div className={styles.text}>
-                {narrow ? <h4>{content.title}</h4> : <h2>{content.title}</h2>}
-                {narrow ? <p>{content.brief}</p> : <RichBlocks blocks={content.content} />}
+                {content.title && <h2>{content.title}</h2>}
+                {content.content && <RichBlocks blocks={content.content} />}
+                { content.relatedPubs && content.relatedPubs.length > 0 && <RelatedPubs pubs={content.relatedPubs} />}
             </div>
         </div>
     );
