@@ -1,0 +1,49 @@
+.Lightbox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+    background: $color-primary-bg-trans;
+    backdrop-filter: blur(4px);
+
+    .close {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        z-index: 14;
+    }
+
+    .innerContainer {
+        .imageContainer {
+            overflow: hidden;
+            position: relative;
+
+            span {
+                position: relative;
+                max-height: 100%;
+            }
+
+            img {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                object-position: left;
+            }
+        }
+        > *:not(.imageContainer) {
+            flex-grow: 0;
+        }
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
