@@ -1,9 +1,18 @@
 .HomeResearchContent {
     display: flex;
     flex-direction: column;
-    gap: 50px;
-
+    margin: -25px;
+    &> * { margin: 25px;}
     @include respond-to(mediumsmall) {
         gap: 0;
+    }
+
+    .directions {
+        position: relative;
+        margin: 15px;
+        .homeResearchDirection {
+            width: calc(33% - 20px);
+            margin: 10px;
+        }
     }
 }

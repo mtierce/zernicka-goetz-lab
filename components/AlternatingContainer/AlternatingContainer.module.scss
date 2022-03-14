@@ -1,6 +1,6 @@
 .AlternatingContainer {
     @include twelve-column;
-    row-gap: 125px;
+    row-gap: 175px;
 
     @include respond-to(mediumsmall) {
         display: flex;
@@ -13,14 +13,5 @@
     }
     > *:nth-child(even) {
         grid-column: 3 / 13;
-    }
-
-    &.narrow {
-        > *:nth-child(odd) {
-            grid-column: 6 / 13;
-        }
-        > *:nth-child(even) {
-            grid-column: 1 / 8;
-        }
     }
 }

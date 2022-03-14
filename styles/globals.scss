@@ -14,10 +14,10 @@ a {
   box-sizing: border-box;
 }
 
-h1:first-child, h2:first-child, h3:first-child {
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, p:first-child {
   margin-top: 0;
 }
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, p:last-child {
   margin-bottom: 0;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -100,15 +100,9 @@ h6 {
   }
 }
 
-p a {
-  color: $color-highlight;
-  &:hover {
-    text-decoration: underline #F7CCD7 0.4em;
-    text-underline-offset: -0.4em;
-    text-decoration-skip-ink: none;
-  }
-  &:active {
-    color: #F7CCD7;
+p {
+  a {
+    @include simpleLink
   }
 }
 

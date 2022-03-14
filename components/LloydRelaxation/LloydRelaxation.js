@@ -10,7 +10,7 @@ const LloydRelaxation = ({}) => {
     useInterval(() => {
         setFrame( frame + 10 );
         window.scrollTo(0, window.innerHeight * frame / 1200);
-        if (window.scrollY > window.innerHeight * 0.48) {
+        if (window.scrollY > window.innerHeight * 0.6) {
             setAnimating(false);
         }
     }, animating ? 60 : null )
@@ -113,7 +113,7 @@ const LloydRelaxation = ({}) => {
         context.current.clearRect(0, 0, width, height);
         context.current.beginPath();
         voronoi.current.render(context.current);
-        context.current.strokeStyle = "red";
+        context.current.strokeStyle = "#EB2D63";
         context.current.stroke();
 
         context.current.beginPath();
@@ -123,11 +123,11 @@ const LloydRelaxation = ({}) => {
             const x0 = points.current[i];
             const y0 = points.current[i + 1];
             const [x1, y1] = polygonCentroid(cell);
-            context.current.moveTo(x0, y0);
-            context.current.lineTo(points.current[i] = x0 + (x1 - x0), points.current[i + 1] = y0 + (y1 - y0));
+            points.current[i] = x0 + (x1 - x0);
+            points.current[i + 1] = y0 + (y1 - y0);
         }
 
-        context.current.stroke();            
+        context.current.stroke();      
         voronoi.current.update();
     }
 
@@ -139,7 +139,7 @@ const LloydRelaxation = ({}) => {
             context.current.clearRect(0, 0, width, height);
             context.current.beginPath();
             voronoi.current.render(context.current);
-            context.current.strokeStyle = "red";
+            context.current.strokeStyle = "#EB2D63";
             context.current.stroke();
 
             context.current.beginPath();
@@ -159,9 +159,14 @@ const LloydRelaxation = ({}) => {
 
     return (
         <div className={styles.LloydRelaxation} ref={container}>
+            
             <canvas ref={canvasRef} width={width} height={height}>
 
             </canvas>
+            <div className={styles.overlay} >
+                <h1 className={styles.tagLine}>The Art of Stem Cell and Embryo Research</h1>
+                <div className={styles.chevron} />
+            </div>
         </div>
     );
 };

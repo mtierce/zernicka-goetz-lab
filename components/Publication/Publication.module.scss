@@ -17,7 +17,9 @@
     @include top-line-shadow;
 
     .title {
-        
+        &:hover {
+            color: $color-highlight;
+        }
     }
 
     .authors {

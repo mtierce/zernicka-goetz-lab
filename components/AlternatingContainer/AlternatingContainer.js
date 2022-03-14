@@ -5,15 +5,10 @@ import classNames from 'classnames/bind';
 
 let cx = classNames.bind(styles);
 
-const AlternatingContainer = ({narrow=false, children}) => {
-    const alternatingStyles = cx({
-        AlternatingContainer: true,
-        narrow: narrow
-    })
-    
+const AlternatingContainer = ({children}) => {
     return (
         <Container>
-            <div className={alternatingStyles}>
+            <div className={styles.AlternatingContainer}>
                 {children}
             </div>
         </Container>

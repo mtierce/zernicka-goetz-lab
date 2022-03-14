@@ -44,7 +44,7 @@ const Header = ({headerButton}) => {
 
 
     function watchScroll(event) {
-        let minScroll = router.pathname == "/" ? window.innerHeight * 0.5 : 20;
+        let minScroll = router.pathname == "/" ? window.innerHeight * 0.6 : 20;
         if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
             setHidden(false);
         } else if (window.scrollY > minScroll) {

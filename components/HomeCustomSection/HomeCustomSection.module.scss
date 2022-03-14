@@ -1,1 +1,7 @@
-.HomeCustomSection {}
+.HomeCustomSection {
+    margin: -25px;
+    &> * {
+        margin: 25px;
+    }
+
+}

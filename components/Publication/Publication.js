@@ -12,15 +12,17 @@ const Publication = ({pub}) => {
     if (pub.featured) {
         return (
             <div className={pubClasses}>
-                <h2 className={styles.title}>{pub.title}</h2>
+                <a href={pub.link} target="_blank" rel="noopener noreferrer"><h2 className={styles.title}>{pub.title}</h2></a>
                 <p className={`${styles.authors} body4`}>{pub.authors}</p>
+                <p className={`${styles.authors} body4`}><em>{pub.pub}</em>. DOI: {pub.doi}</p>
             </div>
         ); 
     } else {
         return (
             <div className={pubClasses}>
-                <h3 className={styles.title}>{pub.title}</h3>
+                <a href={pub.link} target="_blank" rel="noopener noreferrer"><h4 className={styles.title}>{pub.title}</h4></a>
                 <p className={`${styles.authors} body5`}>{pub.authors}</p>
+                <p className={`${styles.authors} body5`}><em>{pub.pub}</em>. DOI: {pub.doi}</p>
             </div>
         );
     }

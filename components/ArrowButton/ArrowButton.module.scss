@@ -1,11 +1,12 @@
 .ArrowButton {
+    display: block;
+    box-sizing: border-box;
     * {
         color: $color-highlight;
         margin: 0;
     }
 
     &.large {
-        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;

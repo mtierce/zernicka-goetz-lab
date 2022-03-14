@@ -1,10 +1,34 @@
 .LloydRelaxation {
-    height: 150vh;
+    height: 160vh;
     width: 100%;
-    background: white;
+    background: $color-maroon;
 
     canvas {
         position: sticky;    
         top: 0;
+    }
+
+    .overlay {
+        height: 50vh;
+        position: sticky;
+        z-index: 8;
+        color: $color-primary-bg;
+        &> * {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .chevron {
+            background-image: url('/assets/chevron.svg');
+            height: 40px;
+            width: 40px;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }

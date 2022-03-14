@@ -19,6 +19,7 @@ import HomeResearchContent from '../components/HomeResearchContent/HomeResearchC
 import HomeCustomSection from '../components/HomeCustomSection/HomeCustomSection';
 import HomeNewsSection from '../components/HomeNewsSection/HomeNewsSection';
 import HomeBookSection from '../components/HomeBookSection/HomeBookSection';
+import HomeMissionSection from '../components/HomeMissionSection/HomeMissionSection';
 
 // HELPER COMPONENTS
 const HomeContent = ({content}) => {
@@ -60,7 +61,8 @@ export default function Home({menuItems}) {
 
       <Layout menuItems={menuItems}>
         <LloydRelaxation />
-        <AlternatingContainer narrow={true}>
+        { home && home.mission && <HomeMissionSection content={home.mission} />}
+        <AlternatingContainer>
           {home && home.content && home.content.length > 0 ? <HomeContent content={home.content}/> : <></>}
         </AlternatingContainer>
       </Layout>

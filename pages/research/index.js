@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import getMenu from "../../utils/getMenu";
 import getResearch from "../../utils/getResearch";
 import ResearchDirection from "../../components/ResearchDirection/ResearchDirection";
-import ResearchPageSection from '../../components/ResearchPageSection/ResearchPageSection';
+import ResearchPageSection from '../../components/ResearchPageSection/ResearchPageSection';1
 
 const ResearchContent = ({content}) => {
     let count = 0;

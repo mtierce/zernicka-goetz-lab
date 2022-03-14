@@ -1,0 +1,15 @@
+.HomeMissionSection {
+    padding: 150px 50px;
+    text-align: center;
+    background: $color-maroon;
+    color: $color-primary-bg;
+    display: flex;
+    align-items: center;
+    margin: -25px;
+    flex-direction: column;
+
+    &> * {
+        margin: 25px;
+        max-width: 1200px;
+    }
+}
