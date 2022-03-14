@@ -1,0 +1,13 @@
+.HomePubsSection {
+    .FirstPub {
+        margin-bottom: 50px;
+    }
+    .featPubs {
+        margin: -10px -10px 50px;
+
+        .featPub {
+            width: calc(50% - 20px);
+            margin: 20px 10px;
+        }
+    }
+}

@@ -20,6 +20,7 @@ import HomeCustomSection from '../components/HomeCustomSection/HomeCustomSection
 import HomeNewsSection from '../components/HomeNewsSection/HomeNewsSection';
 import HomeBookSection from '../components/HomeBookSection/HomeBookSection';
 import HomeMissionSection from '../components/HomeMissionSection/HomeMissionSection';
+import HomePubsSection from '../components/HomePubsSection/HomePubsSection';
 
 // HELPER COMPONENTS
 const HomeContent = ({content}) => {
@@ -31,6 +32,8 @@ const HomeContent = ({content}) => {
         return <HomeNewsSection key={section._key} />
       } else if (section.type == "book") {
         return <HomeBookSection key={section._key} />
+      } else if (section.type == "publications") {
+        return <HomePubsSection key={section._key} />
       }
     } else {
       return <HomeCustomSection key={section._key} content={section}/>
