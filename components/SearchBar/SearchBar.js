@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import { useSearchFilter } from '../../contexts/searchFilterContext';
 import styles from './SearchBar.module.scss';
+import BasicButton from '../BasicButton/BasicButton';
 
 const SearchBar = ({hideFilter}) => {
     const searchBox = useRef();
@@ -30,6 +31,7 @@ const SearchBar = ({hideFilter}) => {
                     placeholder="Search"
                     value={searchText}
                 />
+                <BasicButton call><h5>Submit</h5></BasicButton>
             </form>
         </div>
     );

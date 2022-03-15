@@ -3,7 +3,7 @@ import styles from './PublicationList.module.scss';
 
 // COMPONENTS
 import PublicationGroup from '../PublicationGroup/PublicationGroup';
-import Container from '../Container/Container';
+import BasicButton from '../BasicButton/BasicButton';
 
 // CONTEXTS
 import { useSearchFilter } from '../../contexts/searchFilterContext';
@@ -17,9 +17,9 @@ const SearchResultsMeta = ({show, numPubs, numFilteredPubs}) => {
     if (!show) return <></>;
 
     return (
-        <div>
+        <div className={styles.filterMeta}>
             <h3>{numFilteredPubs} out of {numPubs} publications matched {search.terms.length > 0 ? `your search for “${search.terms[0]}”` : `the category of ${filter.terms[0]}`}.</h3>
-            <p className={styles.clearFilter} onClick={() => {search.clear(); filter.clear();}}> Clear your {search.terms.length > 0 ? 'search' : 'selection'}</p>
+            <BasicButton callback={() => {search.clear(); filter.clear();}}><h5 className={styles.clearFilter}> Clear {search.terms.length > 0 ? 'Search' : 'Selection'}</h5></BasicButton>
         </div>
     )
 }

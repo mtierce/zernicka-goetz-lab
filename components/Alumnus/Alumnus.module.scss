@@ -1,1 +1,10 @@
-.Alumnus {}
+.Alumnus {
+    width: calc(33% - 30px);
+    h5 {
+        margin: 0;
+    }
+    p {
+        max-width: 20em;
+        margin: 0;
+    }
+}

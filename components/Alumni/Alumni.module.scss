@@ -1,1 +1,5 @@
-.Alumni {}
+.Alumni {
+    width: 100%;
+    margin: -15px;
+    &> * {margin: 15px}
+}

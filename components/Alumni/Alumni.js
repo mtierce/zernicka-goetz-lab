@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './Alumni.module.scss';
+import Masonry from 'react-masonry-component';
 
-const Alumni = ({}) => {
+const Alumni = ({children}) => {
     return (
-        <div className={styles.Alumni}>Alumni</div>
+        <Masonry className={styles.Alumni}>
+            {children}
+        </Masonry>
     );
 };
 

@@ -11,18 +11,20 @@ import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 const LabGroup = ({group, people, roles}) => {
     const mapAlumni = () => {
         return (
-          <Alumni>
-            {people.filter(person => person.alumni).map( person => {
-              return (
-                <Alumnus person={person} key={person._id} />
-              )
-            })}
-          </Alumni>
+            <PersonCategory categoryName={"Alumni"} singleColumn={true}>
+                <Alumni>
+                    {people.filter(person => person.alumni).map( person => {
+                    return (
+                        <Alumnus person={person} key={person._id} />
+                    )
+                    })}
+                </Alumni>
+            </PersonCategory>
         )
     }
 
     const getPeopleByCategory = (role) => {
-        return people.filter( person => person.role.display == role.display && !person.alumni)
+        return people.filter( person => person.role && person.role.display == role.display && !person.alumni)
     }
 
     const getAlumni = () => {

@@ -1,4 +1,5 @@
 // STYLES
+import styles from '../../styles/PublicationPage.module.scss';
 
 // REACT
 import { useEffect, useMemo, useState } from 'react';
@@ -49,8 +50,12 @@ export default function Home({menuItems}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Layout menuItems={menuItems} headerButton={filterOpen ? <ButtonIcon  type="close" callback={() => setFilterOpen(false)}/> : <ButtonIcon type="filter" callback={() => setFilterOpen(true)}/>}>
+            <Layout menuItems={menuItems} >
                 <SearchFilterProvider>
+                    {filterOpen ? 
+                        <div className={styles.filterTab}><ButtonIcon type="close" callback={() => setFilterOpen(false)}/></div> 
+                        : <div className={styles.filterTab}><ButtonIcon type="filter" callback={() => setFilterOpen(true)}/></div>
+                    }
                     <Filter open={filterOpen} setFilterOpen={setFilterOpen} tags={tags}/>
                     <Container>
                         <PublicationList pubs={pubs} />

@@ -2,9 +2,14 @@
 
 }
 
-
-.clearFilter {
-    &:hover {
-        cursor: pointer;
+.filterMeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .clearFilter {
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

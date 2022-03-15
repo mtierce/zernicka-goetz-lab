@@ -4,11 +4,11 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Head from 'next/head';
 
-const Layout = memo(({menuItems, headerButton=false, children}) => {
+const Layout = memo(({menuItems, children}) => {
 
     return (
         <>  
-            <Header headerButton={headerButton}/>
+            <Header />
 
             <main className={styles.Layout}>
                 {children}

@@ -7,7 +7,7 @@ const Tag = ({tag, toggle}) => {
         <li
             onClick={() => toggle(tag)}
             className={styles.tag}
-        ><h3>{tag}</h3></li>
+        ><h6>{tag}</h6></li>
     )
 }
 
@@ -25,7 +25,10 @@ const Tags = ({tags, hideFilter}) => {
 
     return (
         <div className={styles.Tags}>
-            {tags.map(tag => <Tag tag={tag} key={tag} toggle={toggleTag}/>)}
+            <h4>Filter Terms</h4>
+            <div className={styles.tagList}>
+                {tags.map(tag => <Tag tag={tag} key={tag} toggle={toggleTag}/>)}
+            </div>
         </div>
     );
 };

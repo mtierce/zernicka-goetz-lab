@@ -1,10 +1,11 @@
 .Publication {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 
     width: calc(33% - 40px);
-    margin: 0 20px 75px;
+    padding-bottom: 120px;
+    margin: -20px 20px;
+    &> * {margin: 0 0 20px 0;}
 
     &.featured {
         width: calc(66% - 40px);

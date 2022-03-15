@@ -5,6 +5,17 @@
         gap: 50px;
     }
 
+    &.singleColumn {
+        .peopleContainer {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    h2 {
+        margin-bottom: 50px;
+        margin-top: 25px;
+    }
+
     @include respond-to(small) {
         .peopleContainer {
             grid-template-columns: 1fr;

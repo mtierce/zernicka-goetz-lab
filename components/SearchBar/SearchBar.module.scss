@@ -2,4 +2,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    form {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        padding: -10px;
+        &> * {margin: 0 10px;}
+
+        &:after {
+            content: "";
+            box-shadow: 0px 5px 10px rgba(235, 45, 99, 0.3);
+            border-bottom: 1px solid rgba(235, 45, 99, 1);
+            background: $color-primary-bg;
+            height: 1px;
+            margin-top: 10px;
+            width: 475px;
+            left: 0;
+            display: block;
+            position: absolute;
+            bottom: 0;
+        }
+
+        input[type=text] {
+            position: relative;
+            width: 475px;
+            border: none;
+            font-size: 28px;
+            line-height: 38px;
+            font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
+            background: transparent;
+
+            padding-bottom: 10px !important;
+            
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    
 }
