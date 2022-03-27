@@ -1,12 +1,12 @@
 .HomeNewsSection {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 50px;
 
     .FirstNewsItem {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 25px;
     }
 
     .smallItems {

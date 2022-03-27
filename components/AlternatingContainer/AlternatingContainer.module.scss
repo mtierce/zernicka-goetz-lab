@@ -3,9 +3,8 @@
     row-gap: 175px;
 
     @include respond-to(mediumsmall) {
-        display: flex;
-        flex-direction: column;
-        gap: 100px;
+        grid-template-columns: 1fr;
+        row-gap: 150px;
     }
     
     > *:nth-child(odd) {

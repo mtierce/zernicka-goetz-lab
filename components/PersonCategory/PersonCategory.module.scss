@@ -2,7 +2,8 @@
     .peopleContainer {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 50px;
+        column-gap: 50px;
+        row-gap:50px;
     }
 
     &.singleColumn {
