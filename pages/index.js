@@ -27,13 +27,13 @@ const HomeContent = ({content}) => {
   return content.map( section => {
     if (section._type == "preBuilt") {
       if (section.type == "research") {
-        return <HomeResearchContent key={section._key}/>
+        return <HomeResearchContent image={section.image} key={section._key}/>
       } else if (section.type == "news") {
         return <HomeNewsSection key={section._key} />
       } else if (section.type == "book") {
         return <HomeBookSection key={section._key} />
       } else if (section.type == "publications") {
-        return <HomePubsSection key={section._key} />
+        return <HomePubsSection image={section.image} key={section._key} />
       }
     } else {
       return <HomeCustomSection key={section._key} content={section}/>

@@ -13,6 +13,9 @@ import styles from '../../styles/FundersPage.module.scss';
 import Layout from '../../components/Layout/Layout';
 import AlternatingContainer from "../../components/AlternatingContainer/AlternatingContainer";
 import ResponsiveImage from "../../components/ResponsiveImage/ResponsiveImage";
+import getPage from "../../utils/getPage";
+import PageSection from "../../components/PageSection/PageSection";
+import RichBlocks from "../../components/RichBlocks/RichBlocks";
 
 // ----------------------------------------
 // ----------------------------------------
@@ -28,12 +31,21 @@ const Funder = ({funder}) => {
 
 const Funding = ({menuItems}) => {
     const [funders, setFunders] = useState([]);
+    const [donate, setDonate] = useState(null)
 
     useEffect(() => {
         getFunders()
             .then( res => {
                 console.log(res);
                 setFunders(res);
+            })
+            .catch( err => {
+                console.log(err);
+            })
+        getPage('donate')
+            .then( res => {
+                console.log(res);
+                setDonate(res);
             })
             .catch( err => {
                 console.log(err);
@@ -63,7 +75,7 @@ const Funding = ({menuItems}) => {
                     </div>
                     <div className={styles.donateContainer}>
                         <h1 id="donate">Donate</h1>
-                        Test
+                        {donate && donate.content && donate.content.length > 0 && donate.content.map( (section, i) => <RichBlocks key={i} blocks={section.text} />)}
                     </div>
                 </AlternatingContainer>
             </Layout>

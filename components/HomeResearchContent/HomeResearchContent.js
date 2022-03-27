@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import styles from './HomeResearchContent.module.scss';
 import ArrowButton from '../ArrowButton/ArrowButton';
 import ResearchPageSection from '../ResearchPageSection/ResearchPageSection';
@@ -27,8 +27,10 @@ const masonryOptions = {
     gutter: 18
 };
 
-const HomeResearchContent = () => {
+const HomeResearchContent = ({image}) => {
     const [research, setResearch] = useState(null);
+    const containerRef = useRef();
+
     useEffect( () => {
         getResearch()
             .then( res => {
@@ -52,13 +54,15 @@ const HomeResearchContent = () => {
     }
     
     return (
-        <div className={styles.HomeResearchContent}>
+        <div className={styles.HomeResearchContent} ref={containerRef}>
+            {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
             { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>}
             <Masonry className={styles.directions} options={masonryOptions}>
                 <div className='homeResearch-grid-sizer'></div>
                 {research && research.content && research.content.length > 0 ? mapContent() : <></>}
             </Masonry>
             <ArrowButton link={"/research"} text={"Research"} type={"internal"} size={"large"}/>
+            
         </div>
     )
 };

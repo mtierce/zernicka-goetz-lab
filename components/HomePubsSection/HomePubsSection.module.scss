@@ -15,4 +15,13 @@
             }
         }
     }
+
+    .sideImage {
+        position: absolute;
+        left: 0;
+        transform: translate(-50%);
+        @include respond-to(mediumsmall) {
+            display: none;
+        }
+    }
 }

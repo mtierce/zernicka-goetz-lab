@@ -14,7 +14,7 @@ a {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, li {
   color: #460029;
 }
 
@@ -45,7 +45,7 @@ p.body2 {
   font-size: 24px;
   line-height: 34px;
 }
-p, p.body3 {
+p, p.body3, li {
   font-family: halyard-text, sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -70,7 +70,7 @@ p.body5 {
     font-size: 20px;
     line-height: 25px;
   }
-  p, p.body3 {
+  p, p.body3, li {
     font-size: 17px;
     line-height: 24px;
   }
@@ -84,6 +84,13 @@ p.body5 {
   }
 }
 
+ol, ul {
+  padding: 0 1.2rem;
+}
+
+li {
+  margin: 0.4rem 0 0;
+}
 // ———————————————— HEADERS ——————————————— 
 // ————————————————————————————————————————
 
@@ -300,6 +307,23 @@ p {
     width: 100%;
   }
   .homePubs-grid-item {
+    width: 100%;
+  }
+}
+
+
+.relPub-grid-sizer {
+  width: calc(50% - 18px);
+}
+.relPub-grid-item {
+  width: calc(50% - 18px);
+}
+
+@include respond-to( small ) {
+  .relPub-grid-sizer {
+    width: 100%;
+  }
+  .relPub-grid-item {
     width: 100%;
   }
 }

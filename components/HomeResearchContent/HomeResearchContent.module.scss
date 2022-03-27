@@ -1,5 +1,4 @@
 .HomeResearchContent {
-    
 
     .directions {
         position: relative;
@@ -12,6 +11,15 @@
                 margin: 20px 0;
                 padding-left: 2rem;
             }
+        }
+    }
+
+    .sideImage {
+        position: absolute;
+        right: 0;
+        transform: translate(50%);
+        @include respond-to(mediumsmall) {
+            display: none;
         }
     }
 }

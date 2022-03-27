@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import styles from './HomePubsSection.module.scss';
 import getPublications from '../../utils/getPublications';
 import Masonry from 'react-masonry-component';
@@ -31,8 +31,9 @@ const masonryOptions = {
     gutter: 18
 };
 
-const HomePubsSection = ({}) => {
+const HomePubsSection = ({image}) => {
     const [pubs, setPubs] = useState([]);
+    const containerRef = useRef();
 
     useEffect(() => {
         getPublications()
@@ -46,7 +47,8 @@ const HomePubsSection = ({}) => {
     }, [])
 
     return (
-        <div className={styles.HomePubsSection}>
+        <div className={styles.HomePubsSection} ref={containerRef}>
+            {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
             {pubs.length > 0 ? <FirstPub pub={pubs[0]} /> : <></>}
             {pubs.length > 1 ? (
                 <Masonry className={styles.featPubs} options={masonryOptions}>

@@ -181,7 +181,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     return (
         <div className={LloydRelaxationStyles} ref={container}>
             <div className={overlayStyles} >
-                <h1 className={styles.tagLine}>The Art of Stem Cell and Embryo Research</h1>
+                <h1 className={styles.tagLine}>Building Life<br></br>—<br></br>How a Single Cell Becomes a Human Being</h1>
                 <div className={styles.chevron} />
             </div>
             <canvas ref={canvasRef} width={width} height={height}>
