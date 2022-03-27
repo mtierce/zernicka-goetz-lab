@@ -7,8 +7,10 @@ import Publication from '../Publication/Publication';
 
 const PublicationGroup = ({pubGroup}) => {
     const masonryOptions = {
-        transitionDuration: 1000,
-        columnWidth: 1
+        transitionDuration: 0,
+        itemSelector: '.pub-grid-item',
+        columnWidth: '.pub-grid-sizer',
+        gutter: 18
     };
 
     return (
@@ -18,7 +20,8 @@ const PublicationGroup = ({pubGroup}) => {
                 className={styles.masonry}
                 options={masonryOptions}
             >
-                {pubGroup.map( pub => <Publication pub={pub} key={pub._id} />)}
+                <div className="pub-grid-sizer"></div>
+                {pubGroup.map( pub => <Publication pub={pub} gridItem={styles.gridItem} key={pub._id} />)}
             </Masonry>
         </div>
     );

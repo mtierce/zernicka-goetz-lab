@@ -1,8 +1,13 @@
 .PublicationGroup {
+    position:relative;
+    width: 100%;
+
     .year {
        margin-bottom: 75px;
     }
     .masonry {
-        margin: 0 -20px;
+        @include respond-to(small) {
+            margin: 0;
+        }
     }
 }

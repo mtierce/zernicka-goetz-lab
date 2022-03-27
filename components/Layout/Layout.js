@@ -4,17 +4,18 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Head from 'next/head';
 
-const Layout = memo(({menuItems, children}) => {
+const Layout = memo(({menuItems, children, finishedScrolling}) => {
+    const [hideMenu, setHideMenu] = useState(true);
 
     return (
         <>  
-            <Header />
+            <Header finishedScrolling={finishedScrolling} hideMenu={hideMenu} setHideMenu={setHideMenu}/>
 
             <main className={styles.Layout}>
                 {children}
             </main>
-
-            <Footer menuItems={menuItems} />
+ 
+            <Footer menuItems={menuItems} finishedScrolling={finishedScrolling} hideMenu={hideMenu}/>
         </>
     );
 });

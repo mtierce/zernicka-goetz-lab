@@ -1,23 +1,43 @@
 .ArrowButton {
     display: block;
     box-sizing: border-box;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, color 0.25s ease;
+    border-radius: 5px;
     * {
         color: $color-highlight;
         margin: 0;
     }
-    display: flex;
-    align-items: center;
+
     svg {
         margin-left: 1em;
         height: 0.4em;
     }
     &.large {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 20px 25px;
         svg {
             transform: translateY(0.2em);
             height: 0.8em;
         }
     }
+
+    &:hover {
+        background-color: $color-highlight;
+        @include navDropShadow;
+        * {
+            color: $color-primary-bg;
+            fill: $color-primary-bg;
+        }
+    }
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }

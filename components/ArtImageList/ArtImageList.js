@@ -6,8 +6,10 @@ import Masonry from 'react-masonry-component';
 import ArtImage from '../ArtImage/ArtImage';
 
 const masonryOptions = {
-    transitionDuration: 1000,
-    columnWidth: 1
+    transitionDuration: 0,
+    itemSelector: '.art-grid-item',
+    columnWidth: '.art-grid-sizer',
+    gutter: 18
 }
 
 const ArtImageList = ({art, select}) => {
@@ -19,6 +21,7 @@ const ArtImageList = ({art, select}) => {
                 className={styles.masonry}
                 options={masonryOptions}
             >
+                <div className="art-grid-sizer"></div>
                 { art && art.length > 0 && art.map( art => {
                     return <ArtImage 
                         key={art._key} 

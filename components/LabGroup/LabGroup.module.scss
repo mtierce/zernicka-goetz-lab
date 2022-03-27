@@ -2,11 +2,7 @@
     @include top-line-shadow;
     padding: 75px 0;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 75px;
-
-    h1, h4 {
-        margin: 0;
-    }
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 75px;
 }

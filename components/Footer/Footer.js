@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useRef, memo} from 'react';
 import styles from './Footer.module.scss';
 import Classnames from 'classnames/bind';
-import sanityClient from '@sanity/client'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ButtonIcon from '../ButtonIcon/ButtonIcon';
 
 const cx = Classnames.bind(styles);
 
@@ -21,17 +21,30 @@ const menuItemClasses = (item, path) => {
     }
 }
 
-const MapMenuItems = memo(({menuItems}) => {
+const MapMenuItems = memo(({menuItems, hideMenu, setHideMenu}) => {
     const router = useRouter();
 
     return menuItems.map( item => {
         if (item._type == "specialPage") {
+            if (item.title == "Donate") {
+                return (
+                    <Link href={`/funding#donate`} key={item._key}>
+                       <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
+                    </Link>
+                )
+            }
             return (
                 <Link href={`/${item.title.toLowerCase()}`} key={item._key}>
                     <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
                 </Link>
             )
-        } else {
+        } else if (item._type == "standardPageSection") {
+            return (
+                <Link href={`/page/${item.page.slug}#${item.section}`} key={item._key}>
+                    <h4 className={menuItemClasses(item, router.asPath)}>{item.display}</h4>
+                </Link>
+            )
+        } else { // item is a standard page
             return (
                 <Link href={`/page/${item.slug}`} key={item._key}>
                     <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
@@ -42,11 +55,10 @@ const MapMenuItems = memo(({menuItems}) => {
 });
 MapMenuItems.displayName = "MapMenuItems";
 
-const Footer = memo(({menuItems}) => {
+const Footer = memo(({menuItems, finishedScrolling, hideMenu}) => {
     const router = useRouter();
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
-    const [mobileHidden, setMobileHidden] = useState(true);
 
     // full height of document
     const [height, _setHeight] = useState(0);
@@ -80,7 +92,8 @@ const Footer = memo(({menuItems}) => {
 
 
     function watchScroll(event) {
-        let minScroll = router.pathname == "/" ? window.innerHeight * 0.6 : 20;
+        let minScroll = 20;
+        
         if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
             setHidden(false);
         } else if (window.scrollY > minScroll) {
@@ -106,7 +119,8 @@ const Footer = memo(({menuItems}) => {
     let footerStyles = () => cx({
         footer: true,
         hide: hidden,
-        mobileHide: mobileHidden
+        mobileHide: hideMenu,
+        noHide: router.pathname == "/" && !finishedScrolling
     });
 
     return (
@@ -115,9 +129,6 @@ const Footer = memo(({menuItems}) => {
                 <div className={styles.innerFooter}>
                     <MapMenuItems menuItems={menuItems} />
                 </div>
-            </div>
-            <div className={styles.menuButton} onClick={() => {setMobileHidden(!mobileHidden)}}>
-                O
             </div>
         </>
     );

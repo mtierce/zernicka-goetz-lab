@@ -12,6 +12,13 @@
     .smallItems {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        column-gap: 2rem;
+        row-gap: 4rem;
+        @include respond-to(small) {
+            grid-template-columns: 1fr;
+            .smallItem {
+                padding-left: 2rem;
+            }
+        }
     }
 }

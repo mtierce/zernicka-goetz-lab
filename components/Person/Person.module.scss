@@ -1,8 +1,8 @@
 .Person {
     display: flex;
-    gap: 25px;
 
     .text {
+        margin-left: 25px;
         h3 {margin: 0}
     }
 
@@ -18,8 +18,12 @@
     }
 
     @include respond-to(mediumsmall) {
-        flex-direction: column;
+        .portrait {
+            width: 90px;
+            height: 90px;
+        }
         .text {
+            margin-left: 10px;
             * {
                 max-width: 30em;
             }

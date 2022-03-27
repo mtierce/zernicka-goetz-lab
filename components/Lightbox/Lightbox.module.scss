@@ -11,6 +11,8 @@
     z-index: 12;
     background: $color-primary-bg-trans;
     backdrop-filter: blur(4px);
+    overscroll-behavior: contain;
+    overflow: auto;
 
     .imageContainer {
         position: fixed;
@@ -29,16 +31,14 @@
 
     .meta {
         position: fixed;
-        bottom: 50px;
-        left: 0px;
+        bottom: 0px;
+        left: 20px;
         padding: 20px;
-        width: 275px;
-        display: flex;
-        flex-direction: column;
-        margin: -8px;
-        &> * {margin: 8px;}
+        display: grid;
+        row-gap: 8px;
         background: $color-primary-bg-trans;
         backdrop-filter: blur(4px);
+        border-radius: 5px 5px 0 0;
         @include navDropShadow;
         .close {
             margin-top: 15px;
@@ -48,5 +48,14 @@
             div { height: 100%; width: 100%;}
             svg { height: 100%; width: 100%;}
         }
+
+        @include respond-to(small) {
+            right: 20px;
+        }
+
+        @include respond-to(mediumlarge) {
+            width: 350px;
+        }
     }
+
 }

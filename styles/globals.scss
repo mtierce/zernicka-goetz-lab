@@ -14,37 +14,84 @@ a {
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  color: #460029;
+}
+
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, p:first-child {
   margin-top: 0;
 }
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, p:last-child {
   margin-bottom: 0;
 }
-h1, h2, h3, h4, h5, h6 {
+h1 {
+  margin: 0.5em 0;
+}
+h2, h3, h4, h5{
   margin: 0.75em 0;
 }
+h6 {
+  margin: 0;
+}
 
-p {
+// ———————————————— BODY ——————————————— 
+// ————————————————————————————————————————
+
+p.body1 {
+  font-size: 30px;
+  line-height: 40px;
+}
+p.body2 {
+  font-size: 24px;
+  line-height: 34px;
+}
+p, p.body3 {
   font-family: halyard-text, sans-serif;
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
-}
-p.body5 {
-  font-size: 13px;
-  line-height: 21px;
+  margin-top: 0;
 }
 p.body4 {
   font-size: 16px;
   line-height: 22px;
 }
+p.body5 {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+@include respond-to(mediumsmall) {
+  p.body1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  p.body2 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  p, p.body3 {
+    font-size: 17px;
+    line-height: 24px;
+  }
+  p.body4 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  p.body5 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+// ———————————————— HEADERS ——————————————— 
+// ————————————————————————————————————————
 
 h1 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
   font-weight: 300;
-  font-size: 90px;
-  line-height: 104px;
-  margin:0;
+  font-size: 80px;
+  line-height: 86px;
 }
 h2 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
@@ -75,28 +122,32 @@ h6 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 26px;
+  line-height: 22px;
 }
 @include respond-to(mediumsmall) {
   h1 {
-    font-size: 48px;
-    line-height: 54px;
+    font-size: 38px;
+    line-height: 42px;
   }
   h2 {
-    font-size: 38px;
-    line-height: 46px;
+    font-size: 32px;
+    line-height: 36px;
   }
   h3 {
-    font-size: 28px;
-    line-height: 38px;
+    font-size: 24px;
+    line-height: 30px;
   }
   h4 {
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 26px;
   }
   h5 {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px;
+  }
+  h6 {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
@@ -160,5 +211,95 @@ p {
   }
   100% {
       transform: translateY(-100%);
+  }
+}
+
+
+// —————————————————————————
+// Publication Grid
+
+.pub-grid-sizer {
+  width: calc(33.333% - 12px);
+}
+.pub-grid-item {
+  width: calc(33.333% - 12px);
+}
+.pub-grid-item-featured {
+  width: calc(66.666% - 12px);
+}
+
+@include respond-to( medium ) {
+  .pub-grid-sizer {
+    width: calc(50% - 18px);
+  }
+  .pub-grid-item {
+    width: calc(50% - 18px);
+  }
+  .pub-grid-item-featured {
+    width: 100%;
+  } 
+}
+
+@include respond-to( small ) {
+  .pub-grid-item, .pub-grid-sizer, .pub-grid-item-featured {
+    width: 100%;
+  }
+}
+
+
+// —————————————————————————
+// Art Grid
+
+.art-grid-sizer {
+  width: calc(33.333% - 12px);
+}
+.art-grid-item {
+  width: calc(33.333% - 12px);
+}
+
+@include respond-to( small ) {
+  .art-grid-sizer {
+    width: calc(50% - 18px);
+  }
+  .art-grid-item {
+    width: calc(50% - 18px);
+  }
+}
+
+// —————————————————————————
+// Home Research Grid
+
+.homeResearch-grid-sizer {
+  width: calc(33.333% - 12px);
+}
+.homeResearch-grid-item {
+  width: calc(33.333% - 12px);
+}
+
+@include respond-to( small ) {
+  .homeResearch-grid-sizer {
+    width: 100%;
+  }
+  .homeResearch-grid-item {
+    width: 100%;
+  }
+}
+
+// —————————————————————————
+// Home Pubs Grid
+
+.homePubs-grid-sizer {
+  width: calc(50% - 18px);
+}
+.homePubs-grid-item {
+  width: calc(50% - 18px);
+}
+
+@include respond-to( small ) {
+  .homePubs-grid-sizer {
+    width: 100%;
+  }
+  .homePubs-grid-item {
+    width: 100%;
   }
 }

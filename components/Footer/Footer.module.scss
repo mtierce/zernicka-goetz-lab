@@ -16,6 +16,9 @@
         &.hide {
             transform: translateY(110%);
         }
+        &.noHide {
+            transform: none;
+        }
     }
 
     .innerFooter {
@@ -35,8 +38,10 @@
     @include respond-to(small) {
         position: fixed;
         top: 0;
-        height: 100vh;
+        bottom: 0;
+        height: 100%;
         transform: translateX(0);
+        padding-top: 6rem;
 
         &.mobileHide {
             transform: translateX(110%);
@@ -51,13 +56,3 @@
     }
 }
 
-.menuButton {
-    display: none;
-    position: fixed;
-    top: 0; right: 0;
-    padding: 1rem;
-    z-index: 12;
-    @include respond-to(small) {
-        display: block;
-    }
-}

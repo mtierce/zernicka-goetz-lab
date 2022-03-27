@@ -7,7 +7,9 @@ const cx = classNames.bind(styles);
 const Publication = ({pub}) => {
     const pubClasses = cx({
         Publication: true,
-        featured: pub.featured ? pub.featured : false
+        featured: pub.featured,
+        "pub-grid-item-featured": pub.featured, 
+        "pub-grid-item": true
     });
     if (pub.featured) {
         return (

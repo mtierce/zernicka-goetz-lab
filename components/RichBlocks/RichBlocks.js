@@ -5,8 +5,12 @@ const RichBlocks = ({blocks, noH1=false}) => {
     const serializers = {
         types: {
             richBlock: (props) => {
+                console.log(props);
                 if (props.node.listItem) {
                     return SanityBlockContent.defaultSerializers.listItem(props);
+                }
+                if (props.node.style == "large") {
+                    return <p className="body1">{props.node.children.map(child => child.text)}</p>
                 }
                 if (noH1) {
                     if (props.node.style == "h1") {

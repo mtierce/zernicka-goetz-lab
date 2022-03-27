@@ -14,7 +14,7 @@ const ResearchContent = ({content}) => {
             return <ResearchDirection key={section._key} content={section} even={count % 2 == 0}/>
         } else if (section._type == "section") {
             count += 2;
-            return [<ResearchPageSection key={section._key} content={section} />, <div key={`${section._key}space`} className={StyleSheet.space}></div>]
+            return <ResearchPageSection key={section._key} content={section} />
         }
     });
 }

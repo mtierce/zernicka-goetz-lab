@@ -49,9 +49,9 @@ const LabGroup = ({group, people, roles}) => {
         <div className={styles.LabGroup}>
             <div className={styles.groupMeta}>
                 <h1>{group.title}</h1>
-                <h4>{group.description}</h4>
+                <p className="body1">{group.description}</p>
+                <ResponsiveImage img={group.groupPhoto} />
             </div>
-            <ResponsiveImage img={group.groupPhoto} />
             {mapCategories(roles)}
             {getAlumni().length > 0 && mapAlumni(getAlumni())}
         </div>

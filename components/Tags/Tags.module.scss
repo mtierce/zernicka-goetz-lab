@@ -1,14 +1,31 @@
 .Tags {
-    .tag {
-        display: inline-block;
-        list-style-type: none;
-        margin-right: 2rem;
-        &:hover {
-            cursor: pointer;
-        }
-        
-        * {
+    .tagList {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 18px;
+        row-gap: 5px;
+        .tag {
             display: inline-block;
+            list-style-type: none;
+            margin-right: 2rem;
+            &:hover {
+                cursor: pointer;
+            }
+            
+            * {
+                display: inline-block;
+            }
+        }
+    }
+    @include respond-to(medium) {
+        .tagList {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @include respond-to(small) {
+        .tagList {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 10px;
         }
     }
 }

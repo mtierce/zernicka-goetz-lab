@@ -7,7 +7,7 @@ import Masonry from 'react-masonry-component';
 
 const HomeResearchDirection = ({content}) => {
     return (
-        <div className={styles.homeResearchDirection}>
+        <div className={`${styles.homeResearchDirection} homeResearch-grid-item`}>
             <h4>{content.title}</h4>
             <p className='body5'>{content.brief}</p>
         </div>
@@ -19,6 +19,13 @@ const ResearchHeader = ({content}) => {
         <ResearchPageSection content={content}/>
     )
 }
+
+const masonryOptions = {
+    transitionDuration: 0,
+    itemSelector: '.homeResearch-grid-item',
+    columnWidth: '.homeResearch-grid-sizer',
+    gutter: 18
+};
 
 const HomeResearchContent = () => {
     const [research, setResearch] = useState(null);
@@ -47,7 +54,8 @@ const HomeResearchContent = () => {
     return (
         <div className={styles.HomeResearchContent}>
             { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>}
-            <Masonry className={styles.directions}>
+            <Masonry className={styles.directions} options={masonryOptions}>
+                <div className='homeResearch-grid-sizer'></div>
                 {research && research.content && research.content.length > 0 ? mapContent() : <></>}
             </Masonry>
             <ArrowButton link={"/research"} text={"Research"} type={"internal"} size={"large"}/>

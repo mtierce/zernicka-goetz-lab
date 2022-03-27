@@ -43,6 +43,8 @@ const HomeContent = ({content}) => {
 
 export default function Home({menuItems}) {
   const [home, setHome] = useState(null);
+  const [finishedScrolling, setFinishedScrolling] = useState(false);
+
   useEffect(() => {
     getHome()
       .then( res => {
@@ -62,8 +64,8 @@ export default function Home({menuItems}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout menuItems={menuItems}>
-        <LloydRelaxation />
+      <Layout menuItems={menuItems} finishedScrolling={finishedScrolling}>
+        <LloydRelaxation setFinishedScrolling={setFinishedScrolling} finishedScrolling={finishedScrolling}/>
         { home && home.mission && <HomeMissionSection content={home.mission} />}
         <AlternatingContainer>
           {home && home.content && home.content.length > 0 ? <HomeContent content={home.content}/> : <></>}

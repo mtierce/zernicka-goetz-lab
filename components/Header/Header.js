@@ -3,10 +3,11 @@ import styles from './Header.module.scss';
 import Classnames from 'classnames/bind';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ButtonIcon from '../ButtonIcon/ButtonIcon';
 
 const cx = Classnames.bind(styles);
 
-const Header = ({}) => {
+const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
     const router = useRouter();
     
     // hide the header & footer?
@@ -44,7 +45,8 @@ const Header = ({}) => {
 
 
     function watchScroll(event) {
-        let minScroll = router.pathname == "/" ? window.innerHeight * 0.6 : 20;
+        let minScroll= 20;
+
         if ((heightRef.current - window.scrollY - window.innerHeight) < 20) {
             setHidden(false);
         } else if (window.scrollY > minScroll) {
@@ -68,13 +70,20 @@ const Header = ({}) => {
 
     let headerStyles = () => cx({
         header: true,
-        hide: hidden
+        hide: hidden,
+        noHide: (router.pathname == "/" && !finishedScrolling) || !hideMenu
     });
 
     return (
         <div className={headerStyles()}>
             <div className={styles.innerHeader}>
                 <h2><Link href="/">Zernicka-Goetz Lab</Link></h2>
+            </div>
+            <div className={styles.menuButton}>
+                <ButtonIcon 
+                    type={hideMenu ? "hamburger" : "close"}
+                    callback={() => setHideMenu(!hideMenu)}
+                />
             </div>
         </div>
     );

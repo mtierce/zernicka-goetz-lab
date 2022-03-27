@@ -6,7 +6,13 @@ export default async function getMenu() {
             _type == "specialPage" => {
                 title, _key, _type
             },
-            _type == "standardPage" => @-> {_type, title, "_key": _id, 'slug': slug.current}
+            _type == "standardPage" => @-> {_type, title, "_key": _id, 'slug': slug.current},
+            _type == "standardPageSection" => {
+                _type, 
+                page->{'slug': slug.current}, 
+                section,
+                display
+            }
         }
     }`);
     return menu.links;

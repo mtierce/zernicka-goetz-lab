@@ -24,6 +24,9 @@ const SmallNewsItems = ({items}) => {
         return (
             <div key={item._id} className={styles.smallItem}>
                 <h4>{item.title}</h4>
+                <div className={styles.text}>
+                    <RichBlocks blocks={item.content} />
+                </div>
             </div>
         )
     })

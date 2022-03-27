@@ -5,7 +5,7 @@ import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const ArtImage = ({art, select}) => {
     return (
-        <div className={styles.ArtImage} onClick={() => select(art)}>
+        <div className={`${styles.ArtImage} art-grid-item`} onClick={() => select(art)}>
             <ResponsiveImage img={art.image} />
         </div>
     );

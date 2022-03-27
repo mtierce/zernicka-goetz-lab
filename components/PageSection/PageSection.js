@@ -20,7 +20,6 @@ const Media = memo(({items}) => {
         </div>
     )
 });
-
 Media.displayName = "Media";
 
 const Text = memo(({title = "", text}) => {

@@ -3,8 +3,11 @@ import styles from './LloydRelaxation.module.scss';
 import { Delaunay } from 'd3-delaunay';
 import { polygonCentroid } from 'd3-polygon';
 import useInterval from '../../utils/useInterval';
+import classNames from 'classnames/bind';
 
-const LloydRelaxation = ({}) => {
+const cx = classNames.bind(styles);
+
+const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     const [animating, setAnimating] = useState(true);
     
     useInterval(() => {
@@ -50,8 +53,16 @@ const LloydRelaxation = ({}) => {
         } else {
             setReverseFrame(window.scrollY / window.innerHeight * 1200);
         }
+        console.log(`scrollY: ${window.scrollY}\ninnerHeight: ${window.innerHeight}`)
+        if (window.scrollY > (window.innerHeight * 0.6)) {
+            setFinishedScrolling(true);
+        }
         setScrollPos(window.scrollY);
     }
+
+    useEffect(() => {
+        if (finishedScrolling) window.scrollTo(0, 0);
+    }, [finishedScrolling])
 
     const canvasRef = useRef();
     const container = useRef();
@@ -157,16 +168,25 @@ const LloydRelaxation = ({}) => {
         }
     }
 
-    return (
-        <div className={styles.LloydRelaxation} ref={container}>
-            
-            <canvas ref={canvasRef} width={width} height={height}>
+    let overlayStyles = cx({
+        overlay: true,
+        absolute: finishedScrolling
+    });
 
-            </canvas>
-            <div className={styles.overlay} >
+    let LloydRelaxationStyles = cx({
+        LloydRelaxation: true,
+        finished: finishedScrolling
+    })
+
+    return (
+        <div className={LloydRelaxationStyles} ref={container}>
+            <div className={overlayStyles} >
                 <h1 className={styles.tagLine}>The Art of Stem Cell and Embryo Research</h1>
                 <div className={styles.chevron} />
             </div>
+            <canvas ref={canvasRef} width={width} height={height}>
+
+            </canvas>
         </div>
     );
 };

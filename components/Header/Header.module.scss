@@ -16,26 +16,36 @@
         height: 100px;
         align-items: center;
         justify-content: flex-start;
-        h1 {
-            flex-grow: 2;
-        }
     }
 
     &.hide {
         transform: translateY(-110%);
     }
 
+    &.noHide {
+        transform: none;
+    }
+
     .innerHeader {
+        flex-grow: 2;
         h2 {
+            text-align: center;
             margin: 0;
             @include respond-to(small) {
                 font-size: 22px;
+                text-align: left;
             }
         }
     }
 
-    .headerButton {
-        position: absolute;
-        right: 50px;
+    .menuButton {
+        width: 25px;
+        height: 25px;
+        z-index: 12;
+        div { height: 100%; width: 100%;}
+        svg { height: 100%; width: 100%;}
+        @include respond-to(mediumlarge) {
+            display: none;
+        }
     }
 }

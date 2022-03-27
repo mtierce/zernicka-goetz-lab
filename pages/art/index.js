@@ -46,7 +46,11 @@ export default function Art({menuItems}) {
         <Layout menuItems={menuItems}>
             {selected && <Lightbox selected={selected} deselect={deselect}/>}
             <Container>
-                <ArtImageList art={art} select={select} />
+              <div>
+                <h1>The Art of the Science</h1>
+                <p className="body1">This gallery highlights a selection of the images acquired in our lab to demonstrate the beauty of science. Click the images for more information.</p>
+              </div>
+              <ArtImageList art={art} select={select} />
             </Container>
         </Layout>
     </>
