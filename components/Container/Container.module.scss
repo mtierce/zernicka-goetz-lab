@@ -6,6 +6,8 @@
     align-items: center;
     justify-content: center;
     padding: 200px 2rem;
+    position: relative;
+    overflow: hidden;
     @include respond-to(small) {
         padding: 75px 1rem;
     }

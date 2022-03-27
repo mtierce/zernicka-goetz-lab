@@ -81,7 +81,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
 
     useEffect(() => {
         console.log(window.innerHeight);
-        setWidth(window.innerWidth);
+        setWidth(container.current.offsetWidth);
         setHeight(window.innerHeight);
         setup();
     }, []);
