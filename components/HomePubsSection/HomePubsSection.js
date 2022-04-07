@@ -1,14 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import styles from './HomePubsSection.module.scss';
 import getPublications from '../../utils/getPublications';
-import Masonry from 'react-masonry-component';
 import ArrowButton from '../ArrowButton/ArrowButton';
 
 const FirstPub = ({pub}) => {
     return (
         <div className={styles.FirstPub}>
-            <h2>{pub.title}</h2>
-            <h4>{pub.pub}</h4>
+            <h4 style={{marginBottom: "1rem"}}>{new Date(pub.pubDate).toLocaleDateString('en-us', {month:"long", day: "numeric", year: "numeric"})}</h4>
+            <a href={pub.link} target="_blank" rel="noopener noreferrer"><h2 className={styles.title}>{pub.title}</h2></a>
+            <p className="body1">{pub.pub}</p>
         </div>
     )
 }
@@ -17,8 +17,9 @@ const FeatPubs = ({pubs}) => {
     return pubs.map( pub => {
         return (
             <div className={`${styles.featPub} homePubs-grid-item`} key={pub._id}>
-                <h4>{pub.title}</h4>
-                <p className='body5'>{pub.pub}</p>
+                <h6 style={{marginBottom: "0.5rem"}}>{new Date(pub.pubDate).toLocaleDateString('en-us', {month:"long", day: "numeric", year: "numeric"})}</h6>
+                <a href={pub.link} target="_blank" rel="noopener noreferrer"><h4 className={styles.title}>{pub.title}</h4></a>
+                <p className='body4'>{pub.pub}</p>
             </div>
         )
     })
@@ -51,10 +52,9 @@ const HomePubsSection = ({image}) => {
             {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
             {pubs.length > 0 ? <FirstPub pub={pubs[0]} /> : <></>}
             {pubs.length > 1 ? (
-                <Masonry className={styles.featPubs} options={masonryOptions}>
-                    <div className='homePubs-grid-sizer'></div>
+                <div className={styles.featPubs}>
                     <FeatPubs pubs={pubs.slice(1, 5)} />
-                </Masonry>
+                </div>
              ) : <></>}
             <ArrowButton link={"/publications"} text={"Publications"} type={"internal"} size={"large"}/>
         </div>

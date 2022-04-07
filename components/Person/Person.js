@@ -6,7 +6,7 @@ import ArrowButton from '../ArrowButton/ArrowButton';
 const Links = ({links}) => {
     console.log(links);
     return links.map(link => {
-        return <ArrowButton key={link._key} link={link.url} type={link.type == "email" ? "email" : "external"} text={link.display ? link.display : ""} />
+        return <ArrowButton key={link._key} link={link.url} type={link.type == "email" ? "email" : "external"} leftAlign={true} text={link.display ? link.display : ""} />
     })
 }
 
@@ -17,7 +17,7 @@ const Person = ({person}) => {
                 <ResponsiveImage img={person.portrait} />
             </div>
             <div className={styles.text}>
-                <h3>{person.firstName} {person.lastName}</h3>
+                <h4>{person.firstName} {person.lastName}</h4>
                 {person.job && person.job != "" ? <p className="body4">{person.job}</p> : <></>}
                 {person.bio && person.bio != "" ? <p className="body4">{person.bio}</p> : <> </>}
                 {person.links && person.links.length > 0 ? <Links links={person.links} /> : <></>}

@@ -18,7 +18,7 @@ const SearchResultsMeta = ({show, numPubs, numFilteredPubs}) => {
 
     return (
         <div className={styles.filterMeta}>
-            <h3>{numFilteredPubs} out of {numPubs} publications matched {search.terms.length > 0 ? `your search for “${search.terms[0]}”` : `the category of ${filter.terms[0]}`}.</h3>
+            <h3>{numFilteredPubs} out of {numPubs} publications matched {search.terms.length > 0 ? `your search for ` : `the category of `}{search.terms.length > 0 ? <>“<span className={styles.searchedTerm}>{search.terms[0]}</span>”</> : <span className={styles.searchedTerm}>{filter.terms[0]}</span>}</h3>
             <BasicButton callback={() => {search.clear(); filter.clear();}}><h5 className={styles.clearFilter}> Clear {search.terms.length > 0 ? 'Search' : 'Selection'}</h5></BasicButton>
         </div>
     )

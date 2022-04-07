@@ -1,12 +1,23 @@
 .HomePubsSection {
+    .title {
+        margin-bottom: 1rem;
+        &:hover {
+            color: $color-highlight;
+        }
+    }
     .FirstPub {
+        position: relative;
         margin-bottom: 50px;
         @include respond-to(small) {
             margin-bottom: 20px;
         }
     }
     .featPubs {
+        position: relative;
         margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
 
         .featPub {
             margin: 20px 0;

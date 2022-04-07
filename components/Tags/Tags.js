@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import styles from './Tags.module.scss';
 import {useSearchFilter} from '../../contexts/searchFilterContext';
 
@@ -23,11 +23,17 @@ const Tags = ({tags, hideFilter}) => {
         }
     }
 
+    const sortedTagEls = useMemo(() => {
+        return tags
+            .sort((a, b) => {return a.toLowerCase() >= b.toLowerCase() ? 1 : -1})
+            .map(tag => <Tag tag={tag} key={tag} toggle={toggleTag}/>);
+    }, [tags])
+
     return (
         <div className={styles.Tags}>
             <h4>Filter Terms</h4>
             <div className={styles.tagList}>
-                {tags.map(tag => <Tag tag={tag} key={tag} toggle={toggleTag}/>)}
+                {sortedTagEls}
             </div>
         </div>
     );

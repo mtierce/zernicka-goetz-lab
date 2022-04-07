@@ -1,4 +1,10 @@
 .Tags {
+    margin-top: 75px;
+    
+    @include respond-to(small) {
+        margin-top: 20px;
+    }
+
     .tagList {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -13,6 +19,7 @@
             }
             
             * {
+                @include linkNoUnderline;
                 display: inline-block;
             }
         }

@@ -26,7 +26,7 @@ const HomeBookSection = ({}) => {
                 <h3>
                     Follow Magda
                 </h3>
-                <ArrowButton link={"https://twitter.com/zernickagoetz?lang=en"} text={"Twitter @ZernickaGoetz"} />
+                <ArrowButton link={"https://twitter.com/zernickagoetz?lang=en"} text={"Twitter @ZernickaGoetz"} leftAlign={true} />
             </div>
         </div>
     );

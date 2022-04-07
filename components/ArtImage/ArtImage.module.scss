@@ -1,3 +1,11 @@
 .ArtImage {
     margin-bottom: 18px;
+    * { overflow: visible !important;}
+    img {
+        transition: box-shadow 0.25s ease;
+    }
+    &:hover {
+        cursor: pointer;
+       img { @include navDropShadow; }
+    }
 }

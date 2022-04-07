@@ -29,25 +29,25 @@ const MapMenuItems = memo(({menuItems, hideMenu, setHideMenu}) => {
             if (item.title == "Donate") {
                 return (
                     <Link href={`/funding#donate`} key={item._key}>
-                       <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
+                       <h5 className={menuItemClasses(item, router.asPath)}>{item.title}</h5>
                     </Link>
                 )
             }
             return (
                 <Link href={`/${item.title.toLowerCase()}`} key={item._key}>
-                    <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
+                    <h5 className={menuItemClasses(item, router.asPath)}>{item.title}</h5>
                 </Link>
             )
         } else if (item._type == "standardPageSection") {
             return (
                 <Link href={`/page/${item.page.slug}#${item.section}`} key={item._key}>
-                    <h4 className={menuItemClasses(item, router.asPath)}>{item.display}</h4>
+                    <h5 className={menuItemClasses(item, router.asPath)}>{item.display}</h5>
                 </Link>
             )
         } else { // item is a standard page
             return (
                 <Link href={`/page/${item.slug}`} key={item._key}>
-                    <h4 className={menuItemClasses(item, router.asPath)}>{item.title}</h4>
+                    <h5 className={menuItemClasses(item, router.asPath)}>{item.title}</h5>
                 </Link>
             )
         }

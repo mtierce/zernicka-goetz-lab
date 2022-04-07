@@ -274,43 +274,7 @@ p {
 }
 
 // —————————————————————————
-// Home Research Grid
-
-.homeResearch-grid-sizer {
-  width: calc(33.333% - 12px);
-}
-.homeResearch-grid-item {
-  width: calc(33.333% - 12px);
-}
-
-@include respond-to( small ) {
-  .homeResearch-grid-sizer {
-    width: 100%;
-  }
-  .homeResearch-grid-item {
-    width: 100%;
-  }
-}
-
-// —————————————————————————
-// Home Pubs Grid
-
-.homePubs-grid-sizer {
-  width: calc(50% - 18px);
-}
-.homePubs-grid-item {
-  width: calc(50% - 18px);
-}
-
-@include respond-to( small ) {
-  .homePubs-grid-sizer {
-    width: 100%;
-  }
-  .homePubs-grid-item {
-    width: 100%;
-  }
-}
-
+// Related Publications Grid
 
 .relPub-grid-sizer {
   width: calc(50% - 18px);
@@ -325,5 +289,24 @@ p {
   }
   .relPub-grid-item {
     width: 100%;
+  }
+}
+
+// —————————————————————————
+// Alumni Grid
+
+.alumni-grid-sizer {
+  width: calc(33% - 18px);
+}
+.alumni-grid-item {
+  width: calc(33% - 18px);
+}
+
+@include respond-to( small ) {
+  .alumni-grid-sizer {
+    width: calc(50% - 18px);
+  }
+  .alumni-grid-item {
+    width: calc(50% - 18px);
   }
 }

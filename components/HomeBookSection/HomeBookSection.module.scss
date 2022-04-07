@@ -10,18 +10,24 @@
     .bookHalf, .twitterHalf {
         display: grid;
         row-gap: 2rem;
+        grid-template-rows: min-content;
         h3 {
             margin: 0;
         }
     
         .content {
             display: flex;
+            span {
+                overflow: visible !important;
+            }
 
             .book {
                 box-sizing: border-box;
                 width: 175px;
                 object-fit: contain;
                 object-position: top;
+                
+                @include navDropShadow;
 
                 @include respond-to(small) {
                     width: 90px;

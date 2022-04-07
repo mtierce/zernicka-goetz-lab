@@ -22,7 +22,7 @@ const Filter = ({open, setFilterOpen, tags}) => {
             style={{ animation: `${open ? "fadeIn" : "fadeOut"} 1s` }}
             onAnimationEnd={onAnimationEnd}
         >   
-            <Container>
+            <Container noSpaceBetween={true}>
                 <SearchBar hideFilter={() => setFilterOpen(false)}/>
                 <Tags tags={tags} hideFilter={() => setFilterOpen(false)} />
             </Container>

@@ -14,6 +14,9 @@ import getRoles from '../../utils/getRoles';
 import Layout from '../../components/Layout/Layout';
 import LabGroup from '../../components/LabGroup/LabGroup';
 import AlternatingContainer from '../../components/AlternatingContainer/AlternatingContainer';
+import PersonCategory from '../../components/PersonCategory/PersonCategory';
+import Alumni from '../../components/Alumni/Alumni';
+import Alumnus from '../../components/Alumnus/Alumnus';
 
 // ----------------------------------------
 // ----------------------------------------
@@ -51,7 +54,7 @@ export default function Lab({menuItems}) {
     }, [])
     
     const filterPeopleByLab = (lab) => {
-        return people.filter( person => person.lab == lab);
+        return people.filter( person => person.lab == lab && !person.alumni);
     }
 
     const conditionalContent = () => {
@@ -67,6 +70,25 @@ export default function Lab({menuItems}) {
         }
     }
 
+    const mapAlumni = () => {
+        return (
+            <PersonCategory categoryName={""} singleColumn={true}>
+                <h1>Alumni</h1>
+                <Alumni>
+                    {getAlumni().sort((a, b) => {return a.lastName.toLowerCase() > b.lastName.toLowerCase() ? 1 : -1}).map( person => {
+                    return (
+                        <Alumnus person={person} key={person._id} />
+                    )
+                    })}
+                </Alumni>
+            </PersonCategory>
+        )
+    }
+
+    const getAlumni = () => {
+        return people.filter(person => person.alumni)
+    }
+
   return (
     <>
       <Head>
@@ -78,6 +100,7 @@ export default function Lab({menuItems}) {
       <Layout menuItems={menuItems}>
           <AlternatingContainer>
               {conditionalContent()}
+              {getAlumni().length > 0 && mapAlumni(getAlumni())}
           </AlternatingContainer>
       </Layout>
 

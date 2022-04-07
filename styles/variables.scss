@@ -61,6 +61,15 @@ $break-medium: 1400px;
     color: #F7CCD7;
   }
 }
+@mixin linkNoUnderline {
+  &:hover {
+    color: $color-highlight;
+  }
+  &:active {
+    color: #F7CCD7;
+  }
+}
+
 
 // COLOR VARIABLES ————————————————————————————————————————————————
 $color-primary-bg: #F5F3F2;

@@ -9,7 +9,7 @@ const HomeResearchDirection = ({content}) => {
     return (
         <div className={`${styles.homeResearchDirection} homeResearch-grid-item`}>
             <h4>{content.title}</h4>
-            <p className='body5'>{content.brief}</p>
+            <p className='body3'>{content.brief}</p>
         </div>
     )
 }
@@ -57,10 +57,9 @@ const HomeResearchContent = ({image}) => {
         <div className={styles.HomeResearchContent} ref={containerRef}>
             {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
             { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>}
-            <Masonry className={styles.directions} options={masonryOptions}>
-                <div className='homeResearch-grid-sizer'></div>
+            <div className={styles.directions}>
                 {research && research.content && research.content.length > 0 ? mapContent() : <></>}
-            </Masonry>
+            </div>
             <ArrowButton link={"/research"} text={"Research"} type={"internal"} size={"large"}/>
             
         </div>

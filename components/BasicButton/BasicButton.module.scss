@@ -1,20 +1,21 @@
 .BasicButton {
-    padding: 10px;
+    padding: 10px 15px;
     color: $color-maroon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background: transparent;
     border-radius: 3px;
     transition: background-color 0.5s ease, box-shadow 0.5s ease, color 0.25s ease;
+    * {
+        color: $color-highlight;
+        margin: 0;
+    }
     &:hover {
         cursor: pointer;
         background-color: $color-highlight;
-        color: $color-primary-bg;
+        * {color: $color-primary-bg;}
         @include navDropShadow;
-    }
-    &:active {
-        cursor: pointer;
-        background-color: $color-highlight;
-        color: $color-primary-bg;
-        box-shadow: inset 0 0 3px $color-maroon;
     }
 }
