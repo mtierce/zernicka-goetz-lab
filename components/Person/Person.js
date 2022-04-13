@@ -14,7 +14,9 @@ const Person = ({person}) => {
     return (
         <div className={styles.Person}>
             <div className={styles.portrait}>
-                <ResponsiveImage img={person.portrait} />
+                {person.portrait && (
+                    <ResponsiveImage img={person.portrait} />
+                )}
             </div>
             <div className={styles.text}>
                 <h4>{person.firstName} {person.lastName}</h4>

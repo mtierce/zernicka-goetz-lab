@@ -12,6 +12,8 @@ a {
 
 * {
   box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale; /*(For Firefox)*/
+  -webkit-font-smoothing: antialiased; /*(For Chrome and Safari)*/
 }
 
 h1, h2, h3, h4, h5, h6, p, li {
@@ -49,19 +51,40 @@ p, p.body3, li {
   font-family: halyard-text, sans-serif;
   font-weight: 300;
   font-size: 20px;
-  line-height: 30px;
+  line-height: 28px;
   margin-top: 0;
 }
 p.body4 {
   font-size: 16px;
-  line-height: 22px;
+  line-height: 24px;
 }
 p.body5 {
   font-size: 13px;
   line-height: 18px;
 }
-
-@include respond-to(mediumsmall) {
+@include respond-to(medium) {
+  p.body1 {
+    font-size: 27px;
+    line-height: 36px;
+  }
+  p.body2 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  p, p.body3, li {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  p.body4 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  p.body5 {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+@include respond-to(small) {
   p.body1 {
     font-size: 24px;
     line-height: 28px;
@@ -111,7 +134,7 @@ h3 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
   font-weight: 400;
   font-size: 38px;
-  line-height: 46px;
+  line-height: 43px;
 }
 h4 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
@@ -123,7 +146,7 @@ h5 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
   font-weight: 400;
   font-size: 24px;
-  line-height: 31px;
+  line-height: 30px;
 }
 h6 {
   font-family: 'new-spirit', "Windsor", "Cheltenham", serif;
@@ -131,7 +154,33 @@ h6 {
   font-size: 18px;
   line-height: 22px;
 }
-@include respond-to(mediumsmall) {
+@include respond-to(medium) {
+  h1 {
+    font-size: 58px;
+    line-height: 62px;
+  }
+  h2 {
+    font-size: 38px;
+    line-height: 43px;
+  }
+  h3 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  h4 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  h5 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  h6 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@include respond-to(small) {
   h1 {
     font-size: 38px;
     line-height: 42px;

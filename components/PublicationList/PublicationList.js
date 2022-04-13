@@ -9,7 +9,7 @@ import BasicButton from '../BasicButton/BasicButton';
 import { useSearchFilter } from '../../contexts/searchFilterContext';
 
 // UTILS
-import { matchFilter, matchSearch, getFilter, chunkPubsByYear } from './PublicationListUtilities';
+import {getFilter, chunkPubsByYear } from './PublicationListUtilities';
 
 const SearchResultsMeta = ({show, numPubs, numFilteredPubs}) => {
     const {search, filter} = useSearchFilter();

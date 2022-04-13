@@ -3,6 +3,7 @@
     row-gap: 175px;
 
     @include respond-to(mediumsmall) {
+        display: grid;
         grid-template-columns: 1fr;
         row-gap: 150px;
     }

@@ -37,7 +37,7 @@ export const chunkPubsByYear = (pubs) => {
         // if current pub date is a new year
         let year = new Date(curr.pubDate).toLocaleDateString('en', {year: "numeric"});
 
-        if ( prev.length == 0 || year != prevYear ) {
+        if ( prev.length == 0 || (year !== prevYear && year > 1997) ) {
             prev.push([curr]);
         } else {
             prev[prev.length - 1].push(curr);

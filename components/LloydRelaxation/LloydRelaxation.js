@@ -125,9 +125,28 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
         context.current.beginPath();
         voronoi.current.render(context.current);
         context.current.strokeStyle = "#EB2D63";
+        context.current.fillStyle = "#EB2D63";
+        context.current.fill();
         context.current.stroke();
 
-        context.current.beginPath();
+        let cells = voronoi.current.cellPolygons();
+        let cell = cells.next();
+        let count = 0;
+
+        while (cell && count < 10) {
+            count++;
+            if (!cell.value) continue;
+            context.current.fillStyle = "#ffffff";
+            context.current.moveTo(cell.value[0][0], cell.value[0][1]);
+            for (var i = 1; i < cell.value.length; i++) {
+                context.current.lineTo(cell.value[i][0], cell.value[i][1]);
+            }
+            context.current.closePath();
+            context.current.fill()
+
+            cell = cells.next();
+        }
+
         for (let i = 0; i < points.current.length; i += 2) {
             const cell = voronoi.current.cellPolygon(i >> 1);
             if (cell === null) continue;
@@ -136,9 +155,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             const [x1, y1] = polygonCentroid(cell);
             points.current[i] = x0 + (x1 - x0);
             points.current[i + 1] = y0 + (y1 - y0);
-        }
-
-        context.current.stroke();      
+        }     
         voronoi.current.update();
     }
 
@@ -153,7 +170,24 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             context.current.strokeStyle = "#EB2D63";
             context.current.stroke();
 
-            context.current.beginPath();
+            let cells = voronoi.current.cellPolygons();
+            let cell = cells.next();
+            let count = 0;
+
+            while (cell && count < 10) {
+                count++;
+                if (!cell.value) continue;
+                context.current.fillStyle = "#ffffff";
+                context.current.moveTo(cell.value[0][0], cell.value[0][1]);
+                for (var i = 1; i < cell.value.length; i++) {
+                    context.current.lineTo(cell.value[i][0], cell.value[i][1]);
+                }
+                context.current.closePath();
+                context.current.fill()
+
+                cell = cells.next();
+            }
+
             for (let i = 0; i < prevPoints.length; i += 2) {
                 const cell = voronoi.current.cellPolygon(i >> 1);
                 if (cell === null) continue;
@@ -162,8 +196,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
                 const [x1, y1] = polygonCentroid(cell);
                 context.current.moveTo(x0, y0);
                 context.current.lineTo(points.current[i] = prevPoints[i], points.current[i+1] = prevPoints[i + 1]);
-            }
-            context.current.stroke();            
+            }           
             voronoi.current.update();
         }
     }
@@ -181,7 +214,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     return (
         <div className={LloydRelaxationStyles} ref={container}>
             <div className={overlayStyles} >
-                <h1 className={styles.tagLine}>Building Life<br></br>—<br></br>How a Single Cell Becomes a Human Being</h1>
+                <h1 className={styles.tagLine}>Building Life<br></br>—<br></br>Stem Cells and Embryo Development</h1>
                 <div className={styles.chevron} />
             </div>
             <canvas ref={canvasRef} width={width} height={height}>
