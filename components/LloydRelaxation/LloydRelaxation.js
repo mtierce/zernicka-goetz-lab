@@ -7,6 +7,13 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
+const colorSet = [
+    "#F8B9C9",
+    "#F99CB5",
+    "#F6D6DE",
+    "#FF326B"
+]
+
 const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     const [animating, setAnimating] = useState(true);
     
@@ -125,31 +132,24 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
         context.current.beginPath();
         voronoi.current.render(context.current);
         context.current.strokeStyle = "#EB2D63";
-        context.current.fillStyle = "#EB2D63";
-        context.current.fill();
         context.current.stroke();
-
-        let cells = voronoi.current.cellPolygons();
-        let cell = cells.next();
-        let count = 0;
-
-        while (cell && count < 10) {
-            count++;
-            if (!cell.value) continue;
-            context.current.fillStyle = "#ffffff";
-            context.current.moveTo(cell.value[0][0], cell.value[0][1]);
-            for (var i = 1; i < cell.value.length; i++) {
-                context.current.lineTo(cell.value[i][0], cell.value[i][1]);
-            }
-            context.current.closePath();
-            context.current.fill()
-
-            cell = cells.next();
-        }
+        context.current.closePath();
 
         for (let i = 0; i < points.current.length; i += 2) {
             const cell = voronoi.current.cellPolygon(i >> 1);
             if (cell === null) continue;
+
+            if (i < 150 && i > 100) {
+                context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
+                context.current.beginPath();
+                context.current.moveTo(cell[0][0], cell[0][1]);
+                for (var j = 1; j < cell.length; j++) {
+                    context.current.lineTo(cell[j][0], cell[j][1]);
+                }
+                context.current.closePath();
+                context.current.fill()
+            }
+
             const x0 = points.current[i];
             const y0 = points.current[i + 1];
             const [x1, y1] = polygonCentroid(cell);
@@ -170,27 +170,21 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             context.current.strokeStyle = "#EB2D63";
             context.current.stroke();
 
-            let cells = voronoi.current.cellPolygons();
-            let cell = cells.next();
-            let count = 0;
-
-            while (cell && count < 10) {
-                count++;
-                if (!cell.value) continue;
-                context.current.fillStyle = "#ffffff";
-                context.current.moveTo(cell.value[0][0], cell.value[0][1]);
-                for (var i = 1; i < cell.value.length; i++) {
-                    context.current.lineTo(cell.value[i][0], cell.value[i][1]);
-                }
-                context.current.closePath();
-                context.current.fill()
-
-                cell = cells.next();
-            }
-
             for (let i = 0; i < prevPoints.length; i += 2) {
                 const cell = voronoi.current.cellPolygon(i >> 1);
                 if (cell === null) continue;
+
+                if (i < 150 && i > 100) {
+                    context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
+                    context.current.beginPath();
+                    context.current.moveTo(cell[0][0], cell[0][1]);
+                    for (var j = 1; j < cell.length; j++) {
+                        context.current.lineTo(cell[j][0], cell[j][1]);
+                    }
+                    context.current.closePath();
+                    context.current.fill()
+                }
+                
                 const x0 = prevPoints[i];
                 const y0 = prevPoints[i + 1];
                 const [x1, y1] = polygonCentroid(cell);
