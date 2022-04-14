@@ -23,11 +23,11 @@ import HomeMissionSection from '../components/HomeMissionSection/HomeMissionSect
 import HomePubsSection from '../components/HomePubsSection/HomePubsSection';
 
 // HELPER COMPONENTS
-const HomeContent = ({content}) => {
+const HomeContent = ({content, home}) => {
   return content.map( section => {
     if (section._type == "preBuilt") {
       if (section.type == "research") {
-        return <HomeResearchContent image={section.image} key={section._key}/>
+        return <HomeResearchContent text={home.researchText} images={home.researchImages} image={section.image} key={section._key}/>
       } else if (section.type == "news") {
         return <HomeNewsSection key={section._key} />
       } else if (section.type == "book") {
@@ -68,7 +68,7 @@ export default function Home({menuItems}) {
         <LloydRelaxation setFinishedScrolling={setFinishedScrolling} finishedScrolling={finishedScrolling}/>
         { home && home.mission && <HomeMissionSection content={home.mission} />}
         <AlternatingContainer>
-          {home && home.content && home.content.length > 0 ? <HomeContent content={home.content}/> : <></>}
+          {home && home.content && home.content.length > 0 ? <HomeContent home={home} content={home.content}/> : <></>}
         </AlternatingContainer>
       </Layout>
 

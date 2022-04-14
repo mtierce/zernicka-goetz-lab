@@ -3,13 +3,14 @@ import styles from './HomeResearchContent.module.scss';
 import ArrowButton from '../ArrowButton/ArrowButton';
 import ResearchPageSection from '../ResearchPageSection/ResearchPageSection';
 import getResearch from '../../utils/getResearch';
-import Masonry from 'react-masonry-component';
+import RichBlocks from '../RichBlocks/RichBlocks';
+import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
-const HomeResearchDirection = ({content}) => {
+const HomeResearchDirection = ({image}) => {
     return (
         <div className={`${styles.homeResearchDirection} homeResearch-grid-item`}>
-            <h4>{content.title}</h4>
-            <p className='body3'>{content.brief}</p>
+            <ResponsiveImage img={image.image} />
+            <h4 >{image.caption}</h4>
         </div>
     )
 }
@@ -20,14 +21,7 @@ const ResearchHeader = ({content}) => {
     )
 }
 
-const masonryOptions = {
-    transitionDuration: 0,
-    itemSelector: '.homeResearch-grid-item',
-    columnWidth: '.homeResearch-grid-sizer',
-    gutter: 18
-};
-
-const HomeResearchContent = ({image}) => {
+const HomeResearchContent = ({image, text, images}) => {
     const [research, setResearch] = useState(null);
     const containerRef = useRef();
 
@@ -41,22 +35,19 @@ const HomeResearchContent = ({image}) => {
             })
     }, []);
 
-    let count = 0;
-
     const mapContent = () => {
-        return research.content.map( (section, index) => {
-            if (section._type == "research" && section.homePage) {
-                return <HomeResearchDirection key={section._key} content={section}/>
-            } else {
-                return 
-            }
+        return images.map( (image) => {
+            return <HomeResearchDirection key={image._key} image={image}/>
           });
     }
     
     return (
         <div className={styles.HomeResearchContent} ref={containerRef}>
             {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
-            { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>}
+            {/* { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>} */}
+            <div className={styles.text}>
+                {text && <RichBlocks blocks={text} />}
+            </div>
             <div className={styles.directions}>
                 {research && research.content && research.content.length > 0 ? mapContent() : <></>}
             </div>

@@ -6,8 +6,8 @@
         margin-top: 3rem;
 
         display: grid;
-        column-gap: 30px;
-        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 50px;
+        grid-template-columns: 1fr 1fr;
         
         @include respond-to(small) {
             grid-template-columns: 1fr;
@@ -20,6 +20,10 @@
                 padding-left: 2rem;
             }
         }
+    }
+
+    .text {
+        margin-bottom: 50px;
     }
 
     .sideImage {

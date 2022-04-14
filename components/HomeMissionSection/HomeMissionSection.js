@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './HomeMissionSection.module.scss';
-import NextImage from 'next/image';
+import RichBlocks from '../RichBlocks/RichBlocks';
 
 const HomeMissionSection = ({content}) => {
+    console.log(content);
     return (
         <div className={styles.HomeMissionSection}>
             <img src={"/assets/logoVertical.png"} />
-            <h3>{content}</h3>
+            <div className={styles.mission}><RichBlocks blocks={content} /></div>
         </div>
     );
 };

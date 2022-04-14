@@ -13,8 +13,6 @@ const masonryOptions = {
 }
 
 const ArtImageList = ({art, select}) => {
-    
-
     return (
         <div className={styles.ArtImageList}>
             <Masonry
