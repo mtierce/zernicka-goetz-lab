@@ -29,7 +29,7 @@ const masonryOptions = {
 const RelatedPubs = ({pubs}) => {
     return (
         <div className={styles.relatedPubs}>
-            <h5>Related Publications</h5>
+            <h5>Selected Publications</h5>
             <Masonry className={styles.pubList} options={masonryOptions}>
                 <div className="relPub-grid-sizer"></div>
                 {pubs.map( pub => <RelPub pub={pub} key={pub._key}/>)}

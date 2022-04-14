@@ -4,7 +4,7 @@
         position: relative;
         width: 100%;
         margin-top: 3rem;
-
+        margin-bottom: 50px;
         display: grid;
         column-gap: 50px;
         grid-template-columns: 1fr 1fr;
@@ -29,7 +29,7 @@
     .sideImage {
         position: absolute;
         right: 0;
-        transform: translate(50%);
+        transform: translate(60%);
         @include respond-to(mediumsmall) {
             display: none;
         }

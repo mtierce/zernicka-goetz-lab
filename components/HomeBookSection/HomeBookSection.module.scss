@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     row-gap: 3rem;
-    @include respond-to(small) {
+    @include respond-to(mediumsmall) {
         grid-template-columns: 1fr;
     }
 
@@ -11,6 +11,7 @@
         display: grid;
         row-gap: 2rem;
         grid-template-rows: min-content;
+
         h3 {
             margin: 0;
         }
@@ -26,13 +27,12 @@
                 width: 175px;
                 object-fit: contain;
                 object-position: top;
-                
-                @include navDropShadow;
 
                 @include respond-to(small) {
                     width: 90px;
                 }
             }
+
             .text {
                 margin-left: 2rem;
                 @include respond-to(small) {

@@ -7,20 +7,13 @@
         row-gap: 20px;
         align-items: center;
         .funder {
-            mix-blend-mode: multiply;
+            
             height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            &> div {
-                background: $color-maroon;
-
-            }
             img {
                 max-height: 150px !important;
-                -webkit-filter: grayscale(100%);
-                filter: grayscale(100%);
-                mix-blend-mode: screen;
                 position: relative;
             }
         }
