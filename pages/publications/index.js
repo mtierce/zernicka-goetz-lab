@@ -53,8 +53,8 @@ export default function Home({menuItems}) {
             <Layout menuItems={menuItems} >
                 <SearchFilterProvider>
                     {filterOpen ? 
-                        <div className={styles.filterTab}><ButtonIcon type="close" callback={() => setFilterOpen(false)}/></div> 
-                        : <div className={styles.filterTab}><ButtonIcon type="filter" callback={() => setFilterOpen(true)}/></div>
+                        <div className={styles.filterTab} onClick={() => setFilterOpen(false)}><ButtonIcon type="close" callback={() => null}/></div> 
+                        : <div className={styles.filterTab} onClick={() => setFilterOpen(true)}><ButtonIcon type="filter" callback={() => null}/></div>
                     }
                     <Filter open={filterOpen} setFilterOpen={setFilterOpen} tags={tags}/>
                     <Container>

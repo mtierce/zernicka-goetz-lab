@@ -9,7 +9,7 @@ const masonryOptions = {
     transitionDuration: 0,
     itemSelector: '.art-grid-item',
     columnWidth: '.art-grid-sizer',
-    gutter: 18
+    gutter: 50
 }
 
 const ArtImageList = ({art, select}) => {

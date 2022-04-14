@@ -56,6 +56,7 @@ $break-medium: 1400px;
     text-decoration: underline #F7CCD7 0.4em;
     text-underline-offset: -0.4em;
     text-decoration-skip-ink: none;
+    cursor: pointer;
   }
   &:active {
     color: #F7CCD7;
@@ -64,6 +65,7 @@ $break-medium: 1400px;
 @mixin linkNoUnderline {
   &:hover {
     color: $color-highlight;
+    cursor: pointer;
   }
   &:active {
     color: #F7CCD7;

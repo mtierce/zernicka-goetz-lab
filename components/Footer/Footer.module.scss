@@ -28,9 +28,7 @@
         .navItem {
             margin: 0;
             padding: 20px 20px;
-            &:hover {
-                cursor: pointer;
-            }
+            @include linkNoUnderline
         }
     }
 

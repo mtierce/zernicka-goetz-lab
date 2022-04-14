@@ -275,21 +275,21 @@ p {
 // Publication Grid
 
 .pub-grid-sizer {
-  width: calc(33.333% - 12px);
+  width: calc(33.333% - 33px);
 }
 .pub-grid-item {
-  width: calc(33.333% - 12px);
+  width: calc(33.333% - 33px);
 }
 .pub-grid-item-featured {
-  width: calc(66.666% - 12px);
+  width: calc(66.666% - 33px);
 }
 
 @include respond-to( medium ) {
   .pub-grid-sizer {
-    width: calc(50% - 18px);
+    width: calc(50% - 33px);
   }
   .pub-grid-item {
-    width: calc(50% - 18px);
+    width: calc(50% - 33px);
   }
   .pub-grid-item-featured {
     width: 100%;
@@ -307,18 +307,18 @@ p {
 // Art Grid
 
 .art-grid-sizer {
-  width: calc(33.333% - 12px);
+  width: calc(33.333% - 33px);
 }
 .art-grid-item {
-  width: calc(33.333% - 12px);
+  width: calc(33.333% - 33px);
 }
 
 @include respond-to( small ) {
   .art-grid-sizer {
-    width: calc(50% - 18px);
+    width: calc(50% - 33px);
   }
   .art-grid-item {
-    width: calc(50% - 18px);
+    width: calc(50% - 33px);
   }
 }
 

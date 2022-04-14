@@ -11,12 +11,11 @@
     z-index: 20;
     border-radius: 5px 0 0 5px;
     @include navDropShadow;
+    svg * { fill: $color-highlight;}
 
     &:hover {
-        svg * { fill: $color-highlight;}
-    }
-    &:active {
-        background-color: $color-highlight;
-        svg * { fill: $color-primary-bg;}
+        cursor: pointer;
+        background: $color-highlight;
+        svg * { fill: $color-secondary-bg;}
     }
 }

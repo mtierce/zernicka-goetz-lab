@@ -10,7 +10,7 @@ const PublicationGroup = ({pubGroup}) => {
         transitionDuration: 0,
         itemSelector: '.pub-grid-item',
         columnWidth: '.pub-grid-sizer',
-        gutter: 18
+        gutter: 50
     };
 
     const pubYearToShow = useMemo(() => {

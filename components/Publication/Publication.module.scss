@@ -1,5 +1,5 @@
 .Publication {
-    margin: 0 0 120px;
+    margin: 0 0 60px;
     @include top-line-shadow;
     &> * {
         display: block;
@@ -7,9 +7,7 @@
     }
 
     .title {
-        &:hover {
-            color: $color-highlight;
-        }
+        @include linkNoUnderline;
     }
 
     @include respond-to(small) {
