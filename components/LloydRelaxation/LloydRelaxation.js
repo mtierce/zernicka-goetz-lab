@@ -139,16 +139,17 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             const cell = voronoi.current.cellPolygon(i >> 1);
             if (cell === null) continue;
 
-            if (i < 150 && i > 100) {
-                context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
-                context.current.beginPath();
-                context.current.moveTo(cell[0][0], cell[0][1]);
-                for (var j = 1; j < cell.length; j++) {
-                    context.current.lineTo(cell[j][0], cell[j][1]);
-                }
-                context.current.closePath();
-                context.current.fill()
-            }
+            // DRAW FILLED CELLS
+            // if (i < 150 && i > 100) {
+            //     context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
+            //     context.current.beginPath();
+            //     context.current.moveTo(cell[0][0], cell[0][1]);
+            //     for (var j = 1; j < cell.length; j++) {
+            //         context.current.lineTo(cell[j][0], cell[j][1]);
+            //     }
+            //     context.current.closePath();
+            //     context.current.fill()
+            // }
 
             const x0 = points.current[i];
             const y0 = points.current[i + 1];
@@ -174,16 +175,17 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
                 const cell = voronoi.current.cellPolygon(i >> 1);
                 if (cell === null) continue;
 
-                if (i < 150 && i > 100) {
-                    context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
-                    context.current.beginPath();
-                    context.current.moveTo(cell[0][0], cell[0][1]);
-                    for (var j = 1; j < cell.length; j++) {
-                        context.current.lineTo(cell[j][0], cell[j][1]);
-                    }
-                    context.current.closePath();
-                    context.current.fill()
-                }
+                // DRAW FILLED CELLS
+                // if (i < 150 && i > 100) {
+                //     context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
+                //     context.current.beginPath();
+                //     context.current.moveTo(cell[0][0], cell[0][1]);
+                //     for (var j = 1; j < cell.length; j++) {
+                //         context.current.lineTo(cell[j][0], cell[j][1]);
+                //     }
+                //     context.current.closePath();
+                //     context.current.fill()
+                // }
                 
                 const x0 = prevPoints[i];
                 const y0 = prevPoints[i + 1];

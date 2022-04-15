@@ -31,7 +31,7 @@ const HomePubsSection = ({image}) => {
 
     return (
         <div className={styles.HomePubsSection} ref={containerRef}>
-            {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
+            {/* {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />} */}
             <h1>Recent Publications</h1>
             {pubs.length > 1 ? (
                 <div className={styles.featPubs}>

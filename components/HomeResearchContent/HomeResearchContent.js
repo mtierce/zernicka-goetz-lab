@@ -43,7 +43,7 @@ const HomeResearchContent = ({image, text, images}) => {
     
     return (
         <div className={styles.HomeResearchContent} ref={containerRef}>
-            {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />}
+            {/* {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />} */}
             {/* { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>} */}
             <div className={styles.text}>
                 {text && <RichBlocks blocks={text} />}

@@ -7,13 +7,14 @@ import ResearchDirection from "../../components/ResearchDirection/ResearchDirect
 import ResearchPageSection from '../../components/ResearchPageSection/ResearchPageSection';1
 
 const ResearchContent = ({content}) => {
-    let count = 0;
+    let count = 1;
     return content.map( section => {
+        console.log(count);
         if (section._type == "research") {
             count++;
             return <ResearchDirection key={section._key} content={section} even={count % 2 == 0}/>
         } else if (section._type == "section") {
-            count += 2;
+            count++;
             return <ResearchPageSection key={section._key} content={section} />
         }
     });
