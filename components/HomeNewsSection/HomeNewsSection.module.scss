@@ -10,6 +10,22 @@
         img {
             max-height: 610px;
         }
+        .post {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            & > *:first-child {
+                min-width: 300px;
+                margin-right: 50px;
+                flex-shrink: 0;
+            }
+        }
+
+        @include respond-to(small) {
+            .post{
+                flex-direction: column;
+            }
+        }
     }
 
     .smallItems {

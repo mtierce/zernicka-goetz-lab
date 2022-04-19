@@ -1,11 +1,35 @@
 import SanityBlockContent from "@sanity/block-content-to-react";
-import Link from 'next/link';
+import { useEffect, useState, useMemo } from "react";
+import getSlugById from "../../utils/getPageById";
+
+const InternalPageLink = ({id, isDefault, children}) => {
+    const [slug, setSlug] = useState();
+    useEffect(() => {
+        getSlugById(id)
+            .then(res => {
+                console.log(res);
+                setSlug(res[0].slug);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, []);
+    const link = useMemo(() => {
+        if (!slug) return children;
+        if (isDefault) {
+            return <a href={`/${slug.current}`}>{children}</a>
+        } else {
+            return <a href={`/page/${slug.current}`}>{children}</a>
+        }
+    }, [slug, isDefault]);
+
+    return link;
+}
 
 const RichBlocks = ({blocks, noH1=false}) => {
     const serializers = {
         types: {
             richBlock: (props) => {
-                console.log(props);
                 if (props.node.listItem) {
                     return SanityBlockContent.defaultSerializers.listItem(props);
                 }
@@ -32,18 +56,12 @@ const RichBlocks = ({blocks, noH1=false}) => {
             },
             page: ({mark, children}) => {
                 console.log(mark);
-                if (mark.page._type == "defaultPage") {
-                    return <a href={`/${mark.page.slug.current}`}>{children}</a>
-                } else {
-                    return <a href={`/page/${mark.page.slug.current}`}>{children}</a>
-                }
+                return <InternalPageLink id={mark.page._ref} isDefault={mark.page._type == "defaultPage"}>{children}</InternalPageLink>
             },
             document: ({mark, children}) => {
-                console.log(mark);
                 return <a href={mark.file.url} target="_blank" rel="noopener noreferrer">{children}</a>
             },
             mailTo: ({mark, children}) => {
-                console.log(mark);
                 return <a href={`mailto:${mark.address}`}>{children}</a>
             }
         }

@@ -13,7 +13,7 @@ const RelPub = ({pub}) => {
     return (
         <div className={`${styles.relatedPub} relPub-grid-item`}>
             <p className="body5">
-               {pub.authors}. <a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>. <em>{pub.pub}</em>. DOI: {pub.doi}.
+               {pub.authors}. <a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>. <em>{pub.pub}</em>. {new Date(pub.pubDate).toLocaleDateString('en', {year: "numeric"})}.
             </p>
         </div>
     )

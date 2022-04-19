@@ -15,6 +15,13 @@ export default async function getHome() {
             image {
                 ...,
                 asset->
+            },
+            headerImage {
+                ...,
+                image {
+                    ...,
+                    asset->
+                }
             }
         }
     }`);

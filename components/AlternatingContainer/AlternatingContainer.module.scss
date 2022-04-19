@@ -7,11 +7,12 @@
         grid-template-columns: 1fr;
         row-gap: 150px;
     }
-    
-    > *:nth-child(odd) {
-        grid-column: 1 / 11;
-    }
-    > *:nth-child(even) {
-        grid-column: 3 / 13;
+    @include respond-to(large) {
+        > *:nth-child(odd) {
+            grid-column: 1 / 11;
+        }
+        > *:nth-child(even) {
+            grid-column: 3 / 13;
+        }
     }
 }

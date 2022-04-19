@@ -23,7 +23,7 @@ const ResponsiveImage = ({img}) => {
     }
 
     return (
-        <div className={styles.imageContainer} ref={ref} key={img._key}>
+        <div className={styles.imageContainer} ref={ref} key={img._key || img.asset._id}>
             {width > 0 &&
                 <NextImage
                     src={`${img.asset.url}?w=${width}`}

@@ -31,7 +31,7 @@ export default function Research({menuItems}) {
             .catch( err => {
                 console.log(err);
             })
-    }, [])
+    }, []);
 
     return (
         <Layout menuItems={menuItems}>

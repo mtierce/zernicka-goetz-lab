@@ -1,7 +1,9 @@
 .HomeCustomSection {
-    margin: -25px;
     &> * {
-        margin: 25px;
+        margin: 25px 0;
+    }
+    .headerImage {
+        margin: 0 auto;
     }
 
     .logoImg {
