@@ -20,7 +20,7 @@ const masonryOptions = {
     gutter: 18
 };
 
-const RelatedPubs = ({pubs, title = ""}) => {
+const RelatedPubs = ({pubs, title = "Selected Publications"}) => {
     return (
         <div className={styles.relatedPubs}>
             <h5>{title}</h5>
