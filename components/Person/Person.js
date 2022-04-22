@@ -20,7 +20,7 @@ const Person = ({person}) => {
             </div>
             <div className={styles.text}>
                 <h4>{person.firstName} {person.lastName}</h4>
-                {person.job && person.job != "" ? <p className="body4">{person.job}</p> : <></>}
+                {person.job && person.job != "" ? <h6>{person.job}</h6> : <></>}
                 {person.bio && person.bio != "" ? <p className="body4">{person.bio}</p> : <> </>}
                 {person.links && person.links.length > 0 ? <Links links={person.links} /> : <></>}
             </div>
