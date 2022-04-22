@@ -14,7 +14,7 @@ const HomeBookSection = ({}) => {
                     <Image src={bookImage} className={styles.book}/>
                     <div className={styles.text}>
                         <p className="body4">The Dance of Life will take you inside the incredible world of life just as it begins. It reveals the wonder of the earliest and most profound moments of early life; how we become human. Through Magda’s trailblazing research as a professor at Cambridge, you’ll learn how early life starts to take shape and discover the true beauty of life’s beginnings.</p>
-                        <h5>– Penguin Random House</h5>
+                        <h6>– Penguin Random House</h6>
                     </div>
                 </div>
                 <div className={styles.buttons}>
