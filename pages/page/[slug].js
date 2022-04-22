@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Container from '../../components/Container/Container';
 import PageSection from '../../components/PageSection/PageSection';
+import RelatedPubs from '../../components/RelatedPubs/RelatedPubs';
+import styles from '../../styles/StandardPage.module.scss';
 
 export default function Page({menuItems}) {
     const [page, setPage] = useState(null);
@@ -33,8 +35,8 @@ export default function Page({menuItems}) {
     // Map page sections
     const PageContent = () => {
         return page.content.map( section => {
-            console.log(section);
-            return <PageSection key={section._key} section={section} />
+            if (section._type == "section") return <PageSection key={section._key} section={section} />
+            else return <div className={styles.relPubsContainer}><div className={styles.pubs}><RelatedPubs pubs={section.pubs} title={section.title}/></div></div>
         })
     }
 

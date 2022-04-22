@@ -7,6 +7,7 @@ export default async function getPage(slug) {
             "content": content[] {
                 ...,
                 title,
+                pubs[]->,
                 "media": media[] {
                     _type == "image" => {
                         ...,

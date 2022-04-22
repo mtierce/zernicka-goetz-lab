@@ -1,0 +1,38 @@
+.relPubsContainer {
+    @include respond-to(mediumlarge) {
+        display: grid;
+        justify-content: start;
+        position: relative;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 50px;
+        .pubs {
+            position: relative;
+            grid-column: 6 / 13;
+            .pubList {
+                position: relative;
+                .relatedPub {
+                    margin: 20px 0 0;
+                    p { margin-top: 0;}
+                }
+            }
+        }
+    }
+
+    @include respond-to(small) {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 50px;
+
+        .relatedPubs {
+            padding-left: 3rem;
+            margin-top: 30px;
+            .pubList {
+                .relatedPub {
+                    &:not(:first-child){
+                        margin: 20px 0 0;
+                    } 
+                }
+            }
+        }
+    }
+}
