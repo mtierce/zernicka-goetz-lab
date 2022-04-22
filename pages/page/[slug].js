@@ -36,7 +36,7 @@ export default function Page({menuItems}) {
     const PageContent = () => {
         return page.content.map( section => {
             if (section._type == "section") return <PageSection key={section._key} section={section} />
-            else return <div className={styles.relPubsContainer}><div className={styles.pubs}><RelatedPubs pubs={section.pubs} title={section.title}/></div></div>
+            else return <div className={styles.relPubsContainer}><div className={styles.pubs}><RelatedPubs onPage pubs={section.pubs} title={section.title}/></div></div>
         })
     }
 

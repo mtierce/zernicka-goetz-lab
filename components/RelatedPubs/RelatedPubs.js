@@ -20,10 +20,10 @@ const masonryOptions = {
     gutter: 18
 };
 
-const RelatedPubs = ({pubs, title = "Selected Publications"}) => {
+const RelatedPubs = ({pubs, title = "Selected Publications", onPage = false}) => {
     return (
         <div className={styles.relatedPubs}>
-            <h5>{title}</h5>
+            {onPage ? <h3>{title}</h3> : <h5>{title}</h5>}
             <Masonry className={styles.pubList} options={masonryOptions}>
                 <div className="relPub-grid-sizer"></div>
                 {pubs.map( pub => <RelPub pub={pub} key={pub._key}/>)}
