@@ -11,3 +11,6 @@ export const client = sanityClient({
     useCdn: true,
     apiVersion: '2021-08-31'
 });
+
+export const projectId = 'm3w3wkm5';
+export const dataset = 'production'

@@ -33,6 +33,13 @@ const MapMenuItems = memo(({menuItems, hideMenu, setHideMenu}) => {
                     </Link>
                 )
             }
+            if (item.title == "Home") {
+                return (
+                    <Link href={`/`} key={item._key}>
+                       <h5 className={menuItemClasses(item, router.asPath)}>{item.title}</h5>
+                    </Link>
+                ) 
+            }
             return (
                 <Link href={`/${item.title.toLowerCase()}`} key={item._key}>
                     <h5 className={menuItemClasses(item, router.asPath)}>{item.title}</h5>

@@ -3,7 +3,6 @@ import styles from './RelatedPubs.module.scss';
 import Masonry from 'react-masonry-component';
 
 const RelPub = ({pub}) => {
-    console.log(pub);
     return (
         <div className={`${styles.relatedPub} relPub-grid-item`}>
             <p className="body5">

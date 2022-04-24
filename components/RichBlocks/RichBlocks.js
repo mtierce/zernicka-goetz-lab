@@ -1,6 +1,7 @@
 import SanityBlockContent from "@sanity/block-content-to-react";
 import { useEffect, useState, useMemo } from "react";
 import getSlugById from "../../utils/getPageById";
+import { dataset, projectId } from "../../utils/http";
 
 const InternalPageLink = ({id, isDefault, children}) => {
     const [slug, setSlug] = useState();
@@ -22,6 +23,22 @@ const InternalPageLink = ({id, isDefault, children}) => {
             return <a href={`/page/${slug.current}`}>{children}</a>
         }
     }, [slug, isDefault]);
+    return link;
+}
+
+const getUrlFromId = ref => {
+    // Example ref: file-207fd9951e759130053d37cf0a558ffe84ddd1c9-mp3
+    // We don't need the first part, unless we're using the same function for files and images
+    const [_file, id, extension] = ref.split('-');
+    return `https://cdn.sanity.io/files/${projectId}/${dataset}/${id}.${extension}`
+  }
+
+const SanityFileLink = ({id, children}) => {
+    let url = getUrlFromId(id);
+    const link = useMemo(() => {
+        if (!url) return children
+        return <a href={url} target="_blank" rel="noopener noreferrer">{children}</a>
+    }, [url])
 
     return link;
 }
@@ -55,11 +72,11 @@ const RichBlocks = ({blocks, noH1=false}) => {
                   : <a href={href}>{children}</a>
             },
             page: ({mark, children}) => {
-                console.log(mark);
                 return <InternalPageLink id={mark.page._ref} isDefault={mark.page._type == "defaultPage"}>{children}</InternalPageLink>
             },
             document: ({mark, children}) => {
-                return <a href={mark.file.url} target="_blank" rel="noopener noreferrer">{children}</a>
+                console.log(mark);
+                return <SanityFileLink id={mark.file.asset._ref}>{children}</SanityFileLink>
             },
             mailTo: ({mark, children}) => {
                 return <a href={`mailto:${mark.address}`}>{children}</a>

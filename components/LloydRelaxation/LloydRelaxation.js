@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './LloydRelaxation.module.scss';
 import { Delaunay } from 'd3-delaunay';
 import { polygonCentroid } from 'd3-polygon';
@@ -16,6 +16,21 @@ const colorSet = [
 
 const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     const [animating, setAnimating] = useState(true);
+
+    const resizeHandle = useCallback(() => {
+        console.log("resized");
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+        pointArrays = [];
+        setup();
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeHandle);
+        return () => {
+            window.removeEventListener('resize', resizeHandle);
+        }
+    }, []);
     
     useInterval(() => {
         setFrame( frame + 10 );
@@ -50,7 +65,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             });
             window.addEventListener('touchstart', () => {
                 setAnimating(false);
-            })
+            });
         }
     }, [])
 
@@ -87,7 +102,6 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     const pointArrays = useRef([]);
 
     useEffect(() => {
-        console.log(window.innerHeight);
         setWidth(container.current.offsetWidth);
         setHeight(window.innerHeight);
         setup();
