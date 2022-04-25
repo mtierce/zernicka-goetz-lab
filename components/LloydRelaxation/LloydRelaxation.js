@@ -19,11 +19,11 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling, tagLine}) => 
     const [animating, setAnimating] = useState(true);
 
     const resizeHandle = useCallback(() => {
-        console.log("resized");
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
-        pointArrays = [];
-        setup();
+        // console.log("resized");
+        // setWidth(window.innerWidth);
+        // setHeight(window.innerHeight);
+        // pointArrays = [];
+        // setup();
     }, []);
 
     useEffect(() => {
@@ -204,9 +204,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling, tagLine}) => 
                 {tagLine && <RichBlocks blocks={tagLine} />}
                 <div className={styles.chevron} />
             </div>
-            <canvas ref={canvasRef} width={width} height={height}>
-
-            </canvas>
+            <div className={styles.canvasContainer}><canvas ref={canvasRef} width={width} height={height} /></div>
         </div>
     );
 };
