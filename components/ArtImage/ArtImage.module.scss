@@ -6,6 +6,6 @@
     }
     &:hover {
         cursor: pointer;
-       img { @include navDropShadow; }
+       img { box-shadow: 0 0 15px rgba(70, 0, 41, 0.5); }
     }
 }
