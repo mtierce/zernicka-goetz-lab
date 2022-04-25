@@ -3,19 +3,15 @@
         margin-bottom: 1rem;
         @include linkNoUnderline;
     }
-    .FirstPub {
-        position: relative;
-        margin-bottom: 50px;
-        @include respond-to(small) {
-            margin-bottom: 20px;
-        }
-    }
     .featPubs {
         position: relative;
         margin-bottom: 50px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
+        @include respond-to(small) {
+            grid-template-columns: 1fr;
+        }
 
         .featPub {
             margin: 20px 0;

@@ -18,9 +18,18 @@
     }
     &.large {
         padding: 20px 25px;
+        @include respond-to(small) {
+            *{ font-size: 24px;}
+        }
+        
         svg {
             transform: translateY(0.2em);
             height: 0.8em;
+
+            @include respond-to(small) {
+                transform: translateY(0.1em);
+                height: 0.4em;
+            }
         }
     }
 

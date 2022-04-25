@@ -1,23 +1,15 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useRef} from 'react';
 import styles from './HomeResearchContent.module.scss';
 import ArrowButton from '../ArrowButton/ArrowButton';
-import ResearchPageSection from '../ResearchPageSection/ResearchPageSection';
-import getResearch from '../../utils/getResearch';
 import RichBlocks from '../RichBlocks/RichBlocks';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const HomeResearchDirection = ({image}) => {
     return (
-        <div className={`${styles.homeResearchDirection} homeResearch-grid-item`}>
-            <ResponsiveImage img={image.image} />
-            <h4 >{image.caption}</h4>
+        <div className={styles.homeResearchDirection}>
+            <div className={styles.imageContainer}><ResponsiveImage img={image.image} /></div>
+            <div className={styles.textContainer}><h4 >{image.caption}</h4></div>
         </div>
-    )
-}
-
-const ResearchHeader = ({content}) => {
-    return (
-        <ResearchPageSection content={content}/>
     )
 }
 

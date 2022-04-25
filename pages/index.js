@@ -65,7 +65,7 @@ export default function Home({menuItems}) {
       </Head>
 
       <Layout menuItems={menuItems} finishedScrolling={finishedScrolling}>
-        <LloydRelaxation setFinishedScrolling={setFinishedScrolling} finishedScrolling={finishedScrolling}/>
+        <LloydRelaxation setFinishedScrolling={setFinishedScrolling} finishedScrolling={finishedScrolling} tagLine={home?.tagLine}/>
         { home && home.mission && <HomeMissionSection content={home.mission} />}
         <AlternatingContainer>
           {home && home.content && home.content.length > 0 ? <HomeContent home={home} content={home.content}/> : <></>}

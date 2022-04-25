@@ -4,6 +4,7 @@ import { Delaunay } from 'd3-delaunay';
 import { polygonCentroid } from 'd3-polygon';
 import useInterval from '../../utils/useInterval';
 import classNames from 'classnames/bind';
+import RichBlocks from '../RichBlocks/RichBlocks';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ const colorSet = [
     "#FF326B"
 ]
 
-const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
+const LloydRelaxation = ({finishedScrolling, setFinishedScrolling, tagLine}) => {
     const [animating, setAnimating] = useState(true);
 
     const resizeHandle = useCallback(() => {
@@ -153,18 +154,6 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             const cell = voronoi.current.cellPolygon(i >> 1);
             if (cell === null) continue;
 
-            // DRAW FILLED CELLS
-            // if (i < 150 && i > 100) {
-            //     context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
-            //     context.current.beginPath();
-            //     context.current.moveTo(cell[0][0], cell[0][1]);
-            //     for (var j = 1; j < cell.length; j++) {
-            //         context.current.lineTo(cell[j][0], cell[j][1]);
-            //     }
-            //     context.current.closePath();
-            //     context.current.fill()
-            // }
-
             const x0 = points.current[i];
             const y0 = points.current[i + 1];
             const [x1, y1] = polygonCentroid(cell);
@@ -188,18 +177,6 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
             for (let i = 0; i < prevPoints.length; i += 2) {
                 const cell = voronoi.current.cellPolygon(i >> 1);
                 if (cell === null) continue;
-
-                // DRAW FILLED CELLS
-                // if (i < 150 && i > 100) {
-                //     context.current.fillStyle = colorSet[(i / 2) % colorSet.length];
-                //     context.current.beginPath();
-                //     context.current.moveTo(cell[0][0], cell[0][1]);
-                //     for (var j = 1; j < cell.length; j++) {
-                //         context.current.lineTo(cell[j][0], cell[j][1]);
-                //     }
-                //     context.current.closePath();
-                //     context.current.fill()
-                // }
                 
                 const x0 = prevPoints[i];
                 const y0 = prevPoints[i + 1];
@@ -224,7 +201,7 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling}) => {
     return (
         <div className={LloydRelaxationStyles} ref={container}>
             <div className={overlayStyles} >
-                <h1 className={styles.tagLine}>Building Life<br></br>—<br></br>Stem Cells and Embryo Development</h1>
+                {tagLine && <RichBlocks blocks={tagLine} />}
                 <div className={styles.chevron} />
             </div>
             <canvas ref={canvasRef} width={width} height={height}>

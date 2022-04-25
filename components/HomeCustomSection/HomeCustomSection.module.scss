@@ -19,6 +19,10 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        @include respond-to(small) {
+            flex-direction: column;
+        }
+
         &> *:not(:last-child) {
             margin-right: 10px;
         }

@@ -27,8 +27,7 @@ const HomeNewsSection = ({}) => {
     useEffect(() => {
         getNews()
             .then(res => {
-                console.log(res);
-                setNews(res);
+                setNews(res.slice(0, 3));
             })
             .catch( err => {
                 console.log(err);

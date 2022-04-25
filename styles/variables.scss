@@ -30,7 +30,7 @@ $break-medium: 1400px;
   padding-top: 30px !important;
   &:before {
     content: "";
-    box-shadow: 0px 5px 10px rgba(235, 45, 99, 0.3);
+    box-shadow: 0px -5px 10px rgba(235, 45, 99, 0.3);
     border-bottom: 1px solid rgba(235, 45, 99, 1);
     background: $color-primary-bg;
     height: 1px;

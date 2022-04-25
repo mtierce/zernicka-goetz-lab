@@ -15,9 +15,24 @@
 
         .homeResearchDirection {
             margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
             @include respond-to(small) {
                 margin: 20px 0;
-                padding-left: 2rem;
+            }
+            * {
+                margin-top: 0;
+            }
+
+            .imageContainer {
+                width: 170px;
+                margin-right: 50px;
+                flex-shrink: 0;
+                @include respond-to(small) {
+                    width: 15vw;
+                    margin-right: 10px;
+                }
             }
         }
     }
