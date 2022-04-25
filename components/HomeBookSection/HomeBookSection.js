@@ -5,13 +5,13 @@ import styles from './HomeBookSection.module.scss';
 import bookImage from '../../public/assets/danceOfLife.jpg';
 import Image from 'next/image';
 
-const HomeBookSection = ({}) => {
+const HomeBookSection = ({section}) => {
     return (
         <div className={styles.HomeBookSection}>
             <div className={styles.bookHalf}>
                 <h3>Read <em>The Dance of Life</em></h3>
                 <div className={styles.content}>
-                    <Image src={bookImage} className={styles.book}/>
+                    {section.image && <ResponsiveImage img={section.image} />}
                     <div className={styles.text}>
                         <p className="body4">The Dance of Life will take you inside the incredible world of life just as it begins. It reveals the wonder of the earliest and most profound moments of early life; how we become human. Through Magda’s trailblazing research as a professor at Cambridge, you’ll learn how early life starts to take shape and discover the true beauty of life’s beginnings.</p>
                         <h6>– Penguin Random House</h6>

@@ -21,19 +21,8 @@ const ResearchHeader = ({content}) => {
     )
 }
 
-const HomeResearchContent = ({image, text, images}) => {
-    const [research, setResearch] = useState(null);
+const HomeResearchContent = ({text, images}) => {
     const containerRef = useRef();
-
-    useEffect( () => {
-        getResearch()
-            .then( res => {
-                setResearch(res);
-            })
-            .catch( err => {
-                console.log(err);
-            })
-    }, []);
 
     const mapContent = () => {
         return images.map( (image) => {
@@ -43,16 +32,13 @@ const HomeResearchContent = ({image, text, images}) => {
     
     return (
         <div className={styles.HomeResearchContent} ref={containerRef}>
-            {/* {image && <img style={{height: `${containerRef.current ? containerRef.current.offsetHeight : 0}px`}} className={styles.sideImage} src={image.asset.url} />} */}
-            {/* { research && research.content && research.content[0] && research.content[0]._type == "section" && <ResearchHeader content={research.content[0]}/>} */}
             <div className={styles.text}>
                 {text && <RichBlocks blocks={text} />}
             </div>
             <div className={styles.directions}>
-                {research && research.content && research.content.length > 0 ? mapContent() : <></>}
+                {images?.length > 0 ? mapContent() : <></>}
             </div>
             <ArrowButton link={"/research"} text={"Research"} type={"internal"} size={"large"}/>
-            
         </div>
     )
 };

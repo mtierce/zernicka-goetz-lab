@@ -11,11 +11,21 @@ const HomeCustomSection = ({content}) => {
         return content.headerImage.maxWidth ? `${content.headerImage.maxWidth}px` : `10000px`
     }, [])
 
+    const links = useMemo(() => {
+        if (content.links?.length === 0) return <></>;
+        if (content.links?.length === 1) return <ArrowButton link={content.link.url} text={content.link.display} size={"large"} type={"internal"}/>
+        return content.links.map((link) => {
+            return <ArrowButton link={link.url} text={link.display} size={"small"} type={"internal"}/>
+        });
+    }, [content]);
+
     return (
         <div className={styles.HomeCustomSection}>
             {content.headerImage.image && <div className={styles.headerImage} style={{maxWidth: maxWidth}}><ResponsiveImage img={content.headerImage.image}/></div>}
             <RichBlocks blocks={content.text} />
-            <ArrowButton link={content.link.url} text={content.link.display} size={"large"} type={"internal"}/>
+            {links && (
+                <div className={styles.linkContainer}>{links}</div>
+            )}
         </div>
     );
 };
