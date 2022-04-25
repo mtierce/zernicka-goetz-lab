@@ -14,8 +14,8 @@ const HomeCustomSection = ({content}) => {
     const links = useMemo(() => {
         if (content.links?.length === 0) return <></>;
         if (content.links?.length === 1) return <ArrowButton link={content.link.url} text={content.link.display} size={"large"} type={"internal"}/>
-        return content.links.map((link) => {
-            return <ArrowButton link={link.url} text={link.display} size={"small"} type={"internal"}/>
+        return content.links.map((link, index) => {
+            return <ArrowButton key={index} link={link.url} text={link.display} size={"small"} type={"internal"}/>
         });
     }, [content]);
 

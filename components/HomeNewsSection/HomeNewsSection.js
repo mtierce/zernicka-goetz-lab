@@ -8,7 +8,7 @@ import ArrowButton from '../ArrowButton/ArrowButton';
 const NewsItem = ({item}) => {
     return (
         <div className={styles.newsItem}>
-            {item.images && item.images.length > 0 ? <div className={styles.image}><ResponsiveImage img={item.images[0]} /></div> : <div className={styles.image}></div>}
+            {item.images && item.images.length > 0 ? <div className={styles.image} ><ResponsiveImage img={item.images[0]} /></div> : <div className={styles.image}></div>}
             <div className={styles.post}>
                 <h4>{item.title}</h4>
                 <h6 className={styles.date}>
@@ -37,7 +37,7 @@ const HomeNewsSection = ({}) => {
 
     const newsItems = useMemo(() => {
         return news.map(item => (
-            <NewsItem item={item}/>
+            <NewsItem key={item._id} item={item}/>
         ))
     }, [news])
 
