@@ -4,11 +4,23 @@ import Classnames from 'classnames/bind';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ButtonIcon from '../ButtonIcon/ButtonIcon';
+import getHeaderImage from '../../utils/getHeaderLogo';
+import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const cx = Classnames.bind(styles);
 
 const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
     const router = useRouter();
+    const [headerLogo, setHeaderLogo] = useState();
+
+    useEffect(() => {
+        getHeaderImage()
+            .then(res => {
+                console.log(res);
+                setHeaderLogo(res.horizontalLogo);
+            })
+            .catch(err => console.log(err));
+    }, [])
     
     // hide the header & footer?
     const [hidden, setHidden] = useState(false);
@@ -77,7 +89,9 @@ const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
     return (
         <div className={headerStyles()}>
             <div className={styles.innerHeader}>
-                <h2><Link href="/">Zernicka-Goetz Lab</Link></h2>
+                <div className={styles.logoContainer}>
+                    {headerLogo && <ResponsiveImage img={headerLogo} />}
+                </div>
             </div>
             <div className={styles.menuButton}>
                 <ButtonIcon 

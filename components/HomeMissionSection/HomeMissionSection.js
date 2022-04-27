@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './HomeMissionSection.module.scss';
 import RichBlocks from '../RichBlocks/RichBlocks';
+import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
-const HomeMissionSection = ({content}) => {
-    console.log(content);
+const HomeMissionSection = ({content, image}) => {
+    console.log(image);
     return (
         <div className={styles.HomeMissionSection}>
-            <img src={"/assets/logoVertical.png"} />
+            {image && <div className={styles.verticalLogo}><ResponsiveImage img={image} /></div>}
             <div className={styles.mission}><RichBlocks blocks={content} /></div>
         </div>
     );

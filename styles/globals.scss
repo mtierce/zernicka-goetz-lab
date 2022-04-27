@@ -207,7 +207,7 @@ h6 {
   }
 }
 
-p {
+p, li {
   a {
     @include simpleLink
   }

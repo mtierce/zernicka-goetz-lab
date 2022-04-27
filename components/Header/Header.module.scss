@@ -28,13 +28,12 @@
 
     .innerHeader {
         flex-grow: 2;
-        h2 {
-            text-align: center;
-            margin: 0;
-            @include respond-to(small) {
-                font-size: 22px;
-                text-align: left;
-            }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .logoContainer {
+            width: 600px;
         }
     }
 

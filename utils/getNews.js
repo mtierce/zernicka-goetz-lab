@@ -7,6 +7,6 @@ export default async function getNews() {
             ...,
             asset->
         }
-    }`);
+    } | order(date desc)`);
     return news;
 }

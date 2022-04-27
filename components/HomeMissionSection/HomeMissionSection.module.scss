@@ -18,4 +18,8 @@
     @include respond-to(mediumsmall) {
         padding: 150px 20px;
     }
+
+    .verticalLogo {
+        width: 230px;
+    }
 }

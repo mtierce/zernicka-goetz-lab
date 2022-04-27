@@ -23,6 +23,10 @@ export default async function getHome() {
                     asset->
                 }
             }
+        },
+        verticalLogo {
+            ...,
+            asset->
         }
     }`);
     return home;
