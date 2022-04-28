@@ -1,7 +1,21 @@
 .HomeCustomSection {
+    
     &> * {
         margin: 25px 0;
     }
+    @include respond-to(small) {
+        &> * {
+            margin: 10px 0;
+        }
+    }
+    &> *:first-child{
+        margin-top: 0;
+    }
+    &> *:last-child{
+        margin-bottom: 0;
+    }
+    
+
     .headerImage {
         margin: 0 auto;
     }

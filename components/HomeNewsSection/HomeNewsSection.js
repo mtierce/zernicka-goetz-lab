@@ -15,7 +15,7 @@ const NewsItem = ({item}) => {
                     {new Date(item.date).toLocaleDateString("en", {month: "long", day: "numeric", year: "numeric"})}
                 </h6>
                 <div className={styles.text}>
-                    <RichBlocks blocks={item.content} />
+                    <RichBlocks blocks={item.content} allBodyCopy={true}/>
                 </div>
             </div>
         </div>
@@ -41,10 +41,12 @@ const HomeNewsSection = ({}) => {
     }, [news])
 
     return (
+        <div>
         <div className={styles.HomeNewsSection}>
-            <h2>Recent News</h2>
+            <h2 className={styles.sectionTitle}>Recent News</h2>
             {news && news.length > 0 && newsItems}
-            <ArrowButton link={"/news"} size={"large"} text={"News"} type={"internal"}/>
+        </div>
+        <ArrowButton link={"/news"} size={"large"} text={"News"} type={"internal"}/>
         </div>
     );
 };

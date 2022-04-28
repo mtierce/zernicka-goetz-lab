@@ -43,10 +43,14 @@ const SanityFileLink = ({id, children}) => {
     return link;
 }
 
-const RichBlocks = ({blocks, noH1=false}) => {
+const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
     const serializers = {
         types: {
             richBlock: (props) => {
+                if (allBodyCopy) {
+                    props.node.style = "normal";
+                    return SanityBlockContent.defaultSerializers.types.block(props);
+                }
                 if (props.node.listItem) {
                     return SanityBlockContent.defaultSerializers.listItem(props);
                 }

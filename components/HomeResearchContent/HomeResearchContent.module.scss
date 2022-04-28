@@ -4,13 +4,13 @@
         position: relative;
         width: 100%;
         margin-top: 3rem;
-        margin-bottom: 50px;
         display: grid;
         column-gap: 50px;
         grid-template-columns: 1fr 1fr;
         
         @include respond-to(small) {
             grid-template-columns: 1fr;
+            margin-top: 1.5rem;
         }
 
         .homeResearchDirection {

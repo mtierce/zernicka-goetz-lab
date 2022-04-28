@@ -17,9 +17,11 @@
         height: 0.4em;
     }
     &.large {
+        margin-top: 30px;
         padding: 20px 25px;
         @include respond-to(small) {
             *{ font-size: 24px;}
+            margin-top: 0px;
         }
         
         svg {

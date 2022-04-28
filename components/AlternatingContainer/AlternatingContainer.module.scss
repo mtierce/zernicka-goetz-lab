@@ -1,11 +1,11 @@
 .AlternatingContainer {
     @include twelve-column;
-    row-gap: 175px;
+    row-gap: 170px;
 
     @include respond-to(mediumsmall) {
         display: grid;
         grid-template-columns: 1fr;
-        row-gap: 150px;
+        row-gap: 60px;
     }
     @include respond-to(large) {
         > *:nth-child(odd) {

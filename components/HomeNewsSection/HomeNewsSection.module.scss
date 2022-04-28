@@ -1,11 +1,13 @@
 .HomeNewsSection {
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 75px;
+    row-gap: 60px;
     @include respond-to(small) {
-        row-gap: 30px;
+        row-gap: 40px;
     }
-
+    .sectionTitle {
+        margin: 0;
+    }
     .newsItem {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
@@ -20,7 +22,9 @@
                 grid-column: 1 / 3;
                 
             }
-            margin-bottom: 1rem;
+            @include respond-to(small) {
+                margin-bottom: 1rem;
+            }
         }
         .post {
             @include respond-to(mediumlarge) {
