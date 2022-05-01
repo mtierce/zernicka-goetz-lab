@@ -22,7 +22,7 @@ const masonryOptions = {
 const RelatedPubs = ({pubs, title = "Selected Publications", onPage = false}) => {
     return (
         <div className={styles.relatedPubs}>
-            {onPage ? <h3>{title}</h3> : <h5>{title}</h5>}
+            {onPage ? <h3 className={styles.title}>{title}</h3> : <h5 className={styles.title}>{title}</h5>}
             <Masonry className={styles.pubList} options={masonryOptions}>
                 <div className="relPub-grid-sizer"></div>
                 {pubs.map( pub => <RelPub pub={pub} key={pub._key}/>)}

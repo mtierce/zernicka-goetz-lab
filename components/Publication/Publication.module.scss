@@ -15,3 +15,18 @@
         padding-bottom: 40px;
     }
 }
+
+.featWithImage {
+    @include respond-to(mediumlarge) {
+        &> * { 
+            width: calc(50% - 25px);
+            float: left;
+        }
+        &> *:first-child {
+            margin-right: 50px;
+        }
+    }
+    &> *:first-child {
+        margin-bottom: 20px;
+    }
+}
