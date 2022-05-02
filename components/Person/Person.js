@@ -7,9 +7,9 @@ const Links = ({links}) => {
     console.log(links);
     return links.map(link => {
         return link.type == "email" ? (
-            <p class="body5"><a key={link._key} href={`mailto:${link.url}`}>{link.url}</a></p>
+            <p className="body5"><a key={link._key} href={`mailto:${link.url}`}>{link.url}</a></p>
         ) : (
-            <p class="body5"><a key={link._key} href={link.url} target="_blank" rel='noopener noreferrer'>{link.displayText}</a></p>
+            <p className="body5"><a key={link._key} href={link.url} target="_blank" rel='noopener noreferrer'>{link.displayText}</a></p>
         )
     })
 }
