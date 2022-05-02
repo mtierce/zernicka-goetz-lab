@@ -2,6 +2,7 @@ import SanityBlockContent from "@sanity/block-content-to-react";
 import { useEffect, useState, useMemo } from "react";
 import getSlugById from "../../utils/getPageById";
 import { dataset, projectId } from "../../utils/http";
+import styles from './RichBlocks.module.scss';
 
 const InternalPageLink = ({id, isDefault, children}) => {
     const [slug, setSlug] = useState();
@@ -55,7 +56,8 @@ const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
                     return SanityBlockContent.defaultSerializers.listItem(props);
                 }
                 if (props.node.style == "large") {
-                    return <p className="body1">{props.node.children.map(child => child.text)}</p>
+                    console.log(props)
+                    return <p className="body1">{props.children}</p>
                 }
                 if (noH1) {
                     if (props.node.style == "h1") {
@@ -89,7 +91,7 @@ const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
     }
     
     return (
-        <SanityBlockContent blocks={blocks} serializers={serializers} />
+        <SanityBlockContent className={styles.richBlocks} blocks={blocks} serializers={serializers} />
     )
 }
 

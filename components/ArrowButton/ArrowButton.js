@@ -27,7 +27,7 @@ const ArrowButton = ({text, link, type="external", size="small", leftAlign=false
     return (
         <div className={`${styles.container} ${leftAlign ? styles.leftAlign : ""}`}>
             <LinkComponent link={link} size={size} type={type}>
-                {size == "small" ? <><h6>{text} </h6><Arrow /></> : <><h2>{text} </h2><Arrow /></>}
+                {size == "small" ? <><h4>{text} </h4><Arrow /></> : <><h2>{text} </h2><Arrow /></>}
             </LinkComponent>
         </div>
     )

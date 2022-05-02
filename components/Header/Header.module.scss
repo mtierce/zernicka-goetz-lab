@@ -33,7 +33,14 @@
         justify-content: center;
 
         .logoContainer {
-            width: 600px;
+            width: calc(100% - 50px);
+            @include respond-to(mediumlarge) {
+                width: 600px;
+            }
+        }
+
+        * {
+            max-width: 100%;
         }
     }
 

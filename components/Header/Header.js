@@ -89,9 +89,11 @@ const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
     return (
         <div className={headerStyles()}>
             <div className={styles.innerHeader}>
+                <Link href="/"><a>
                 <div className={styles.logoContainer}>
                     {headerLogo && <ResponsiveImage img={headerLogo} />}
                 </div>
+                </a></Link>
             </div>
             <div className={styles.menuButton}>
                 <ButtonIcon 

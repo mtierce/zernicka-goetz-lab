@@ -1,7 +1,10 @@
 .filterTab {
     position: fixed;
     right: 0;
-    top: 200px;
+    top: 170px;
+    @include respond-to(small) {
+        top: 155px;
+    }
     width: 75px;
     height: 75px;
     background: $color-secondary-bg;

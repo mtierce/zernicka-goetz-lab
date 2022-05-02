@@ -6,7 +6,11 @@ import ArrowButton from '../ArrowButton/ArrowButton';
 const Links = ({links}) => {
     console.log(links);
     return links.map(link => {
-        return <ArrowButton key={link._key} link={link.url} type={link.type == "email" ? "email" : "external"} leftAlign={true} text={link.display ? link.display : ""} />
+        return link.type == "email" ? (
+            <p class="body5"><a key={link._key} href={`mailto:${link.url}`}>{link.url}</a></p>
+        ) : (
+            <p class="body5"><a key={link._key} href={link.url} target="_blank" rel='noopener noreferrer'>{link.displayText}</a></p>
+        )
     })
 }
 
