@@ -59,6 +59,10 @@ const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
                     console.log(props)
                     return <p className="body1">{props.children}</p>
                 }
+                if (props.node.style == "small") {
+                    console.log(props)
+                    return <p className="body5">{props.children}</p>
+                }
                 if (noH1) {
                     if (props.node.style == "h1") {
                         props.node.style = "h2";
