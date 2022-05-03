@@ -53,7 +53,7 @@ $break-medium: 1400px;
 @mixin simpleLink {
   color: $color-highlight;
   &:hover {
-    text-decoration-color: #F7CCD7;
+    text-decoration-color: #F6D6DE;
     text-decoration-thickness: 0.4em;
     text-decoration-line: underline;
     text-underline-offset: -0.4em;
@@ -70,7 +70,7 @@ $break-medium: 1400px;
     cursor: pointer;
   }
   &:active {
-    color: #F7CCD7;
+    color: #F6D6DE;
   }
 }
 

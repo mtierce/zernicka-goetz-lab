@@ -31,7 +31,7 @@ const SearchBar = ({hideFilter}) => {
                     placeholder="Search"
                     value={searchText}
                 />
-                <BasicButton call><h5>Submit</h5></BasicButton>
+                <BasicButton><h5>Submit</h5></BasicButton>
             </form>
         </div>
     );

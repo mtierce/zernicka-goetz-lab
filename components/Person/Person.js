@@ -1,15 +1,14 @@
 import React from 'react';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 import styles from './Person.module.scss';
-import ArrowButton from '../ArrowButton/ArrowButton';
 
 const Links = ({links}) => {
     console.log(links);
     return links.map(link => {
         return link.type == "email" ? (
-            <p className="body5"><a key={link._key} href={`mailto:${link.url}`}>{link.url}</a></p>
+            <h6><a key={link._key} href={`mailto:${link.url}`}>{link.url}</a></h6>
         ) : (
-            <p className="body5"><a key={link._key} href={link.url} target="_blank" rel='noopener noreferrer'>{link.displayText}</a></p>
+            <h6><a key={link._key} href={link.url} target="_blank" rel='noopener noreferrer'>{link.displayText}</a></h6>
         )
     })
 }

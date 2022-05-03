@@ -16,6 +16,5 @@
         cursor: pointer;
         background-color: $color-highlight;
         * {color: $color-primary-bg;}
-        @include navDropShadow;
     }
 }

@@ -31,7 +31,7 @@ const HomePubsSection = ({image}) => {
 
     return (
         <div className={styles.HomePubsSection} ref={containerRef}>
-            <h1>Recent Publications</h1>
+            <h2>Recent Publications</h2>
             {pubs.length > 1 ? (
                 <div className={styles.featPubs}>
                     <FeatPubs pubs={pubs.filter(pub => pub.homePage).slice(0, 9)} />

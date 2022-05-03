@@ -7,7 +7,7 @@
         column-gap: 50px;
         .pubs {
             position: relative;
-            grid-column: 6 / 13;
+            grid-column: 5 / 13;
             .pubList {
                 position: relative;
                 .relatedPub {
@@ -22,10 +22,8 @@
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 50px;
-
         .relatedPubs {
-            padding-left: 3rem;
-            margin-top: 30px;
+            padding-left: 1rem !important;
             .pubList {
                 .relatedPub {
                     &:not(:first-child){

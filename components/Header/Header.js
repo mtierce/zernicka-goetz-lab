@@ -91,7 +91,7 @@ const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
             <div className={styles.innerHeader}>
                 <Link href="/"><a>
                 <div className={styles.logoContainer}>
-                    {headerLogo && <ResponsiveImage img={headerLogo} />}
+                    {headerLogo && <img className={styles.logo} src={headerLogo.asset.url} />}
                 </div>
                 </a></Link>
             </div>
