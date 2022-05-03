@@ -1,5 +1,4 @@
 .footer {
-    height: 75px;
     width: 100%;
     background: $color-secondary-bg;
     position: fixed;
@@ -23,12 +22,17 @@
 
     .innerFooter {
         display: flex;
-        flex-direction: row;
-
-        .navItem {
-            margin: 0;
-            padding: 20px 20px;
-            @include linkNoUnderline
+        flex-wrap: wrap;
+        justify-content: center;
+        .menuHalf {
+            height: 75px;
+            display: flex;
+            flex-direction: row;
+            .navItem {
+                margin: 0;
+                padding: 20px 20px;
+                @include linkNoUnderline
+            }
         }
     }
 
@@ -50,8 +54,14 @@
             width: 100%;
             flex-direction: column;
             align-items: center;
-            .navItem {
-                padding: 1rem;
+            .menuHalf{
+                height: unset;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .navItem {
+                    padding: 0.75rem;
+                }
             }
         }
     }

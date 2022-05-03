@@ -21,7 +21,7 @@ const menuItemClasses = (item, path) => {
     }
 }
 
-const MapMenuItems = memo(({menuItems, hideMenu, setHideMenu}) => {
+const MapMenuItems = memo(({menuItems}) => {
     const router = useRouter();
 
     return menuItems.map( item => {
@@ -130,11 +130,28 @@ const Footer = memo(({menuItems, finishedScrolling, hideMenu}) => {
         noHide: router.pathname == "/" && !finishedScrolling
     });
 
+    const SplitMapMenuItems = ({menuItems}) => {
+        let length = menuItems.length;
+        let frontHalf = menuItems.slice(0, Math.ceil(length / 2));
+        let backHalf = menuItems.slice(Math.ceil(length / 2), length);
+
+        return (
+            <>
+            <div key={"fronthalf"} className={styles.menuHalf}>
+                <MapMenuItems menuItems={frontHalf} />
+            </div>
+            <div key={"backhalg"} className={styles.menuHalf}>
+                <MapMenuItems menuItems={backHalf} />
+            </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div className={footerStyles()}>
                 <div className={styles.innerFooter}>
-                    <MapMenuItems menuItems={menuItems} />
+                    <SplitMapMenuItems menuItems={menuItems} />
                 </div>
             </div>
         </>
