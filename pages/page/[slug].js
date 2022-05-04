@@ -35,7 +35,7 @@ export default function Page({menuItems}) {
     return (
         <>
             <Head>
-                <title>{page && page.title && `${page.title} :: Zernicka-Goetz Lab`}</title>
+                <title>{page && page.title && `${page.title} • Zernicka-Goetz Lab`}</title>
             </Head>
             <Layout menuItems={menuItems}>
                 <Container>

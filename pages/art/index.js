@@ -37,7 +37,7 @@ export default function Art({menuItems}) {
   return (
     <>
       <Head>
-        <title>Art of the Science :: Zernicka-Goetz Lab</title>
+        <title>Art of the Science • Zernicka-Goetz Lab</title>
         <meta name="description" content="The Art of the Science" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
