@@ -11,15 +11,20 @@
         color: $color-primary-bg;
     }
     &> * {
-        margin: 25px 0;
         max-width: 1200px;
+    }
+    &> *:not(:last-child) {
+        margin-bottom: 50px;
     }
 
     @include respond-to(mediumsmall) {
-        padding: 150px 20px;
+        padding: 75px 20px;
     }
 
     .verticalLogo {
         width: 230px;
+        @include respond-to(small) {
+            width: 190px;
+        }
     }
 }
