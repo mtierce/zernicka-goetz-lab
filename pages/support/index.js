@@ -36,7 +36,6 @@ const Funding = ({menuItems}) => {
     useEffect(() => {
         getFunders()
             .then( res => {
-                console.log(res);
                 setFunders(res);
             })
             .catch( err => {
@@ -44,7 +43,6 @@ const Funding = ({menuItems}) => {
             })
         getPage('donate')
             .then( res => {
-                console.log(res);
                 setDonate(res);
             })
             .catch( err => {

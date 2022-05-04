@@ -17,7 +17,6 @@ export default function News({menuItems}) {
     useEffect( () => {
         getNews()
             .then( res => {
-                console.log(res);
                 setNewsItems(res);
             })
             .catch( err => {

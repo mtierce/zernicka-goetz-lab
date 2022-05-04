@@ -2,5 +2,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 75px;
+    &> *:not(:last-child) {
+        margin-bottom:75px;
+    }
 }

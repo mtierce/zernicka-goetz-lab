@@ -12,13 +12,11 @@ const SearchBar = ({hideFilter}) => {
         hideFilter();
         filter.clear();
         search.clear();
-        console.log(`Before: \nsearch terms: ${search.terms.join(", ")}\nsearch word: ${searchText}`);
 
         if (searchText !== "" ) {
             search.set([searchText]);
         } else if (searchText == "") search.clear();
 
-        console.log(`After: \nsearch terms: ${search.terms.join(", ")}\nsearch word: ${searchText}`);
     }
     
     return (

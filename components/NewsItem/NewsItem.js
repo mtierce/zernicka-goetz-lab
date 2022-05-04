@@ -10,7 +10,7 @@ const NewsItem = ({item}) => {
             <h3>{item.title}</h3>
             <div className={styles.post}>
                 <h4 className={styles.date}>
-                    {new Date(item.date).toLocaleDateString("en", {month: "long", day: "numeric", year: "numeric"})}
+                    {new Date(item.date.replace(/-/g, '\/').replace(/T.+/, '')).toLocaleDateString("en", {month: "long", day: "numeric", year: "numeric"})}
                 </h4>
                 <div className={styles.text}>
                     <RichBlocks blocks={item.content} />

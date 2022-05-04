@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ButtonIcon from '../ButtonIcon/ButtonIcon';
 import getHeaderImage from '../../utils/getHeaderLogo';
-import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const cx = Classnames.bind(styles);
 
@@ -16,7 +15,6 @@ const Header = ({finishedScrolling, hideMenu, setHideMenu}) => {
     useEffect(() => {
         getHeaderImage()
             .then(res => {
-                console.log(res);
                 setHeaderLogo(res.horizontalLogo);
             })
             .catch(err => console.log(err));

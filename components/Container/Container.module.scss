@@ -20,6 +20,8 @@
         max-width: 1275px;
         display: flex;
         flex-direction: column;
-        row-gap: 75px;
+        &> *:not(:last-child) {
+            margin-bottom: 75px;
+        }
     }
 }

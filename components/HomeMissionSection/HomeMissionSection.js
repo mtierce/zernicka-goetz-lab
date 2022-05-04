@@ -4,7 +4,6 @@ import RichBlocks from '../RichBlocks/RichBlocks';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const HomeMissionSection = ({content, image}) => {
-    console.log(image);
     return (
         <div className={styles.HomeMissionSection}>
             {image && <div className={styles.verticalLogo}><ResponsiveImage img={image} /></div>}

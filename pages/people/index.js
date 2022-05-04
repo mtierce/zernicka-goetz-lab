@@ -29,7 +29,6 @@ export default function Lab({menuItems}) {
     useEffect(() => {
         getLabPage()
             .then( res => {
-                console.log(res);
                 setPage(res);
             })
             .catch( err => {
@@ -37,7 +36,6 @@ export default function Lab({menuItems}) {
             })
         getPeople()
             .then( res => {
-                console.log(res);
                 setPeople(res)
             })
             .catch( err => {
@@ -45,7 +43,6 @@ export default function Lab({menuItems}) {
             })
         getRoles()
             .then( res => {
-                console.log(res);
                 setRoles(res);
             })
             .catch( err => {

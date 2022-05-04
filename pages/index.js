@@ -48,7 +48,6 @@ export default function Home({menuItems}) {
   useEffect(() => {
     getHome()
       .then( res => {
-        console.log(res)
         setHome(res);
       })
       .catch( err => {

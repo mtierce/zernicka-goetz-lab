@@ -9,7 +9,6 @@ const InternalPageLink = ({id, isDefault, children}) => {
     useEffect(() => {
         getSlugById(id)
             .then(res => {
-                console.log(res);
                 setSlug(res[0].slug);
             })
             .catch(err => {
@@ -56,11 +55,9 @@ const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
                     return SanityBlockContent.defaultSerializers.listItem(props);
                 }
                 if (props.node.style == "large") {
-                    console.log(props)
                     return <p className="body1">{props.children}</p>
                 }
                 if (props.node.style == "small") {
-                    console.log(props)
                     return <p className="body5">{props.children}</p>
                 }
                 if (noH1) {
@@ -85,7 +82,6 @@ const RichBlocks = ({blocks, noH1=false, allBodyCopy=false}) => {
                 return <InternalPageLink id={mark.page._ref} isDefault={mark.page._type == "defaultPage"}>{children}</InternalPageLink>
             },
             document: ({mark, children}) => {
-                console.log(mark);
                 return <SanityFileLink id={mark.file.asset._ref}>{children}</SanityFileLink>
             },
             mailTo: ({mark, children}) => {

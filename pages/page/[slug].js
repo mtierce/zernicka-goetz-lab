@@ -13,18 +13,10 @@ export default function Page({menuItems}) {
     const [page, setPage] = useState(null);
     const router = useRouter();
 
-    useEffect(() => {
-        console.log("page state change");
-        console.log(page);
-    }, [page])
-
     // Fetch page data and push to state
     useEffect(() => {
-        console.log("router query change");
-        console.log(router.query.slug);
         getPage(router.query.slug)
             .then( res => {
-                console.log(res);
                 setPage(res);
             })
             .catch( err => {
@@ -62,7 +54,6 @@ export const getStaticPaths = async () => {
 }
 
 export async function getStaticProps({params}) {
-    console.log("getting menu");
     const menuItems = await getMenu();
     return {
       props: { menuItems }

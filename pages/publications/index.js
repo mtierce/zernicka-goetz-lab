@@ -38,7 +38,6 @@ export default function Home({menuItems}) {
     }, []);
 
     const tags = useMemo(() => {
-        console.log(getTags(pubs));
         return getTags(pubs);
     }, [pubs])
 

@@ -5,6 +5,8 @@ export default function Document() {
     <Html>
         <Head>
             <link rel="stylesheet" href="https://use.typekit.net/ztw7xok.css" />
+            <link rel="icon" href="/ZGL_Favicon.ico" sizes="any" />
+            <link rel="apple-touch-icon" href="/ZGL_Favicon-180px.png" />
         </Head>
       <body>
         <Main />

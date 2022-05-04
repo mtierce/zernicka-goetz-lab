@@ -9,7 +9,6 @@ import ResearchPageSection from '../../components/ResearchPageSection/ResearchPa
 const ResearchContent = ({content}) => {
     let count = 1;
     return content.map( section => {
-        console.log(count);
         if (section._type == "research") {
             count++;
             return <ResearchDirection key={section._key} content={section} even={count % 2 == 0}/>
@@ -25,7 +24,6 @@ export default function Research({menuItems}) {
     useEffect( () => {
         getResearch()
             .then( res => {
-                console.log(res);
                 setResearch(res);
             })
             .catch( err => {

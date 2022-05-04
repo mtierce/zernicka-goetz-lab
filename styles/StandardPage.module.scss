@@ -21,7 +21,7 @@
     @include respond-to(small) {
         display: grid;
         grid-template-columns: 1fr;
-        row-gap: 50px;
+        &> *:not(:last-child) {margin-bottom: 50px;}
         .relatedPubs {
             padding-left: 1rem !important;
             .pubList {

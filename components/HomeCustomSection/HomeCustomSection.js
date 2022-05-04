@@ -5,8 +5,6 @@ import ArrowButton from '../ArrowButton/ArrowButton';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 
 const HomeCustomSection = ({content}) => {
-    console.log(content);
-
     const maxWidth = useMemo(() => {
         return content?.headerImage?.maxWidth ? `${content.headerImage?.maxWidth}px` : `10000px`
     }, [])

@@ -12,11 +12,8 @@ const NewsItem = ({item}) => {
             <div className={styles.post}>
                 <h4>{item.title}</h4>
                 <h6 className={styles.date}>
-                    {new Date(item.date).toLocaleDateString("en", {month: "long", day: "numeric", year: "numeric"})}
+                    {new Date(item.date.replace(/-/g, '\/').replace(/T.+/, '')).toLocaleDateString("en", {month: "long", day: "numeric", year: "numeric"})}
                 </h6>
-                <div className={styles.text}>
-                    <RichBlocks blocks={item.content} allBodyCopy={true}/>
-                </div>
             </div>
         </div>
     )

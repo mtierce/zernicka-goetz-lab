@@ -18,20 +18,6 @@ const colorSet = [
 const LloydRelaxation = ({finishedScrolling, setFinishedScrolling, tagLine}) => {
     const [animating, setAnimating] = useState(true);
 
-    const resizeHandle = useCallback(() => {
-        // console.log("resized");
-        // setWidth(window.innerWidth);
-        // setHeight(window.innerHeight);
-        // pointArrays = [];
-        // setup();
-    }, []);
-
-    useEffect(() => {
-        window.addEventListener('resize', resizeHandle);
-        return () => {
-            window.removeEventListener('resize', resizeHandle);
-        }
-    }, []);
     
     useInterval(() => {
         setFrame( frame + 10 );
@@ -76,7 +62,6 @@ const LloydRelaxation = ({finishedScrolling, setFinishedScrolling, tagLine}) => 
         } else {
             setReverseFrame(window.scrollY / window.innerHeight * 1200);
         }
-        console.log(`scrollY: ${window.scrollY}\ninnerHeight: ${window.innerHeight}`)
         if (window.scrollY > (window.innerHeight * 0.6)) {
             setFinishedScrolling(true);
         }
