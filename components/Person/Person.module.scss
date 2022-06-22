@@ -1,16 +1,17 @@
 .Person {
     display: flex;
+    flex-direction: column;
 
     .text {
-        margin-left: 25px;
+        margin-top: 20px;
         h4 {margin: 0 0 0.5rem}
         .job {margin: 0 0 0.75rem;}
     }
 
     .portrait {
         flex-shrink: 0;
-        height: 170px;
-        width: 170px;
+        height: 275px;
+        width: 275px;
         overflow: hidden;
         background: rgba(10, 10, 10, 0.1);
         img {
@@ -21,11 +22,10 @@
 
     @include respond-to(mediumsmall) {
         .portrait {
-            width: 90px;
-            height: 90px;
+            width: 75%;
+            height: unset;
         }
         .text {
-            margin-left: 10px;
             * {
                 max-width: 30em;
             }
