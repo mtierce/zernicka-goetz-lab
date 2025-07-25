@@ -2,8 +2,6 @@ import React from 'react';
 import ArrowButton from '../ArrowButton/ArrowButton';
 import ResponsiveImage from '../ResponsiveImage/ResponsiveImage';
 import styles from './HomeBookSection.module.scss';
-import bookImage from '../../public/assets/danceOfLife.jpg';
-import Image from 'next/image';
 
 const HomeBookSection = ({section}) => {
     return (
