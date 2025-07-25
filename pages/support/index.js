@@ -63,10 +63,6 @@ const Funding = ({menuItems}) => {
                     <div className={styles.fundersContainer}>
                         <h1>Our Funders</h1>
                         <h4>We are most grateful for support from:</h4>
-                        <h2>Cambridge Lab</h2>
-                        <div className={styles.fundersInnerContainer}>
-                            {funders && funders.length > 0 && funders.filter(f => f.lab == "cambridge").map( (funder, i) => <Funder key={i} funder={funder} />)}
-                        </div>
                         <h2>CalTech Lab</h2>
                         <div className={styles.fundersInnerContainer}>
                         {funders && funders.length > 0 && funders.filter(f => f.lab == "caltech").map( (funder, i) => <Funder key={i} funder={funder} />)}
