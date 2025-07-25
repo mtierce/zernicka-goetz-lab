@@ -1,6 +1,7 @@
 module.exports = {
   images: {
     domains: ['cdn.sanity.io'],
+    unoptimized: true, // Disable image optimization to fix Netlify build issues
   },
   sassOptions: {
     includePaths: ['./src'],
