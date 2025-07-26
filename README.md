@@ -1,6 +1,14 @@
 # Zernicka-Goetz Lab Website
 
-This is the official website for the Zernicka-Goetz Lab, built with [Next.js](https://nextjs.org/) and powered by [Sanity.io](https://www.sanity.io/) as a headless CMS for content management.
+This is the official website for the Zernicka-Goetz Lab, built with [Next.js](https://nextjs.org/) and powered by [Sanity.io](https://www.sanity.io/) as a headless CMS for content management. The frontend, public-facing part of the website is hosted on Netlify. 
+
+## TL;DR
+This website's content is in Sanity.io but the display of the site is controlled by a build process in Netlify. Every time there is a change to content (or to the code) a build in Netlify must happen. This is known as a "decoupled architecture." This Github repository is connected to Netlify. A change to the code here should trigger a rebuild of the website in Netlify. As of right now however, changes to content in Sanity.io do not trigger a rebuild of the website in Netlify. 
+
+If you need to change anything about this website, try first making updates in Sanity (login there). If those updates do not show up on the website after 5-10 minutes, there are two possible things you might need to do:
+
+1. Trigger a build of the website in Netlify. Login to Netlify, [go to Deploys](https://app.netlify.com/projects/zernicka-goetz-lab/deploys) and click Trigger Deploy.
+2. Change the code -- some parts of the website are "hardcoded" in the code, rather than coming from content. For example, certain page titles or the order that content is displayed. You can change the code by editing it here in Github. However be aware that changes to the code must be "committed" to the code repository, a form of version control. After code is changed Netlify should rebuild automatically. 
 
 ## Tech Stack
 
