@@ -3,12 +3,21 @@
 This is the official website for the Zernicka-Goetz Lab, built with [Next.js](https://nextjs.org/) and powered by [Sanity.io](https://www.sanity.io/) as a headless CMS for content management. The frontend, public-facing part of the website is hosted on Netlify. 
 
 ## TL;DR
-This website's content is in Sanity.io but the display of the site is controlled by a build process in Netlify. Every time there is a change to content (or to the code) a build in Netlify must happen. This is known as a "decoupled architecture." This Github repository is connected to Netlify. A change to the code here should trigger a rebuild of the website in Netlify. As of right now however, changes to content in Sanity.io do not trigger a rebuild of the website in Netlify. 
+This website's content is in Sanity.io but the display of the site is controlled by a build process in Netlify, which hosts the website HTML, CSS, and Javascript (the frontend). Every time there is a change to content (or to the code) a build in Netlify must happen. This is known as a "decoupled architecture." Both Sanity and this Github code repo are connected to Netlify, which means a change in either the content or code should automatically trigger a rebuild of the site in Netlify. In 5-10 minutes any changes should appear on the site. 
 
 If you need to change anything about this website, try first making updates in Sanity (login there). If those updates do not show up on the website after 5-10 minutes, there are two possible things you might need to do:
 
 1. Trigger a build of the website in Netlify. Login to Netlify, [go to Deploys](https://app.netlify.com/projects/zernicka-goetz-lab/deploys) and click Trigger Deploy.
-2. Change the code -- some parts of the website are "hardcoded" in the code, rather than coming from content. For example, certain page titles or the order that content is displayed. You can change the code by editing it here in Github. However be aware that changes to the code must be "committed" to the code repository, a form of version control. After code is changed Netlify should rebuild automatically. 
+2. Change the code -- some parts of the website are "hardcoded" in the code, rather than coming from content. For example, certain page titles or the order that content is displayed. You can change the code by editing it here in Github. However be aware that changes to the code must be "committed" to the code repository, a form of version control. After code is changed Netlify should rebuild automatically.
+
+### Mistakes and How to Avoid Them or Undo Them
+If you make a change to content that you want to undo, just make the change in Sanity and publish it. The site will rebuild with the correction. 
+
+If you make a code change you want to undo, do the same thing. 
+
+Alternatively, for either, you can also cancel a build in progress before it is published live by going to Deploys in Netlify. 
+
+Finally, for code changes, you can commit changes in Github to a branch other than main. Changes to other branches will not trigger a build. You can then manually trigger a preview build in Netlify for that new branch on a special dedicated URL for reviewing your work. 
 
 ## Tech Stack
 
