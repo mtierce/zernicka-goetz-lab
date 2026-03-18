@@ -1,7 +1,6 @@
 module.exports = {
   images: {
     domains: ['cdn.sanity.io'],
-    unoptimized: true,
   },
   sassOptions: {
     includePaths: ['./src'],

@@ -13,6 +13,7 @@ const Lightbox = ({selected, deselect}) => {
                     src={`${selected.image.asset.url}`}
                     width={selected.image.asset.metadata.dimensions.width}
                     height={selected.image.asset.metadata.dimensions.height}
+                    unoptimized
                 />    
             </div>
             <div className={styles.meta}>

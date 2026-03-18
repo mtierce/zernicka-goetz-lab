@@ -31,6 +31,7 @@ const ResponsiveImage = ({img}) => {
                     height={width / img.asset.metadata.dimensions.aspectRatio}
                     blurDataURL={img.asset.metadata.lqip}
                     placeholder="blur"
+                    unoptimized
                 />
             }
         </div>
